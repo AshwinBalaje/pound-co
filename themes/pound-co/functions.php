@@ -176,3 +176,29 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/customizer.php';
 
+/**
+ * Enqueueing block editor assets
+ */
+function poundco_enqueue_block_editor_assets() {
+	wp_enqueue_script(
+		'editor-script',
+		get_template_directory_uri() . '/assets/js/editor.js',
+		array( 
+			'wp-blocks',
+			'wp-dom-ready', 
+			'wp-edit-post'
+		)
+	);
+}
+add_action( 'enqueue_block_editor_assets', 'poundco_enqueue_block_editor_assets');
+
+/**
+ * Enqueueing block assets
+ */
+function poundco_enqueue_block_assets() {
+	wp_enqueue_style(
+		'blocks-style',
+		get_template_directory_uri() . '/assets/css/blocks.css'
+	);
+}
+add_action( 'enqueue_block_assets', 'poundco_enqueue_block_assets' );
