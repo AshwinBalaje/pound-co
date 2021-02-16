@@ -54,48 +54,48 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /* FONTS
 --------------------------------------------------------------*/
 @font-face {
-	font-family: Lemon Milk Regular;
-	src: url(/assets/fonts/LEMONMILK-Regular.woff) format('woff');
+	font-family: 'Lemon Milk Regular';
+	src: url('assets/fonts/LEMONMILK-Regular.woff') format('woff');
 }
 
 @font-face {
-	font-family: Lemon Milk Regular Italic;
-	src: url(/assets/fonts/LEMONMILK-RegularItalic.woff) format('woff');
+	font-family: 'Lemon Milk Regular Italic';
+	src: url('assets/fonts/LEMONMILK-RegularItalic.woff') format('woff');
 }
 
 @font-face {
-	font-family: Lemon Milk Medium;
-	src: url(/assets/fonts/LEMONMILK-Medium.woff);
+	font-family: 'Lemon Milk Medium';
+	src: url('assets/fonts/LEMONMILK-Medium.woff');
 }
 
 @font-face {
-	font-family: Lemon Milk Medium Italic;
-	src: url(/assets/fonts/LEMONMILK-MediumItalic.woff);
+	font-family: 'Lemon Milk Medium Italic';
+	src: url('assets/fonts/LEMONMILK-MediumItalic.woff');
 }
 
 @font-face {
-	font-family: Lemon Milk Bold;
-	src: url(/assets/fonts/LEMONMILK-Bold.woff);
+	font-family: 'Lemon Milk Bold';
+	src: url('assets/fonts/LEMONMILK-Bold.woff');
 }
 
 @font-face {
-	font-family: Lemon Milk Bold Italic;
-	src: url(/assets/fonts/LEMONMILK-BoldItalic.woff);
+	font-family: 'Lemon Milk Bold Italic';
+	src: url('assets/fonts/LEMONMILK-BoldItalic.woff');
 }
 
 @font-face {
-	font-family: Lemon Milk Light;
-	src: url(/assets/fonts/LEMONMILK-Light.woff);
+	font-family: 'Lemon Milk Light';
+	src: url('assets/fonts/LEMONMILK-Light.woff');
 }
 
 @font-face {
-	font-family: Lemon Milk Light Italic;
-	src: url(/assets/fonts/LEMONMILK-LightItalic.woff);
+	font-family: 'Lemon Milk Light Italic';
+	src: url('assets/fonts/LEMONMILK-LightItalic.woff');
 }
 
 @font-face {
-	font-family: Bahnschrift Regular;
-	src: url(/assets/fonts/BAHNSCHRIFT.woff);
+	font-family: 'Bahnschrift Regular';
+	src: url('assets/fonts/BAHNSCHRIFT.woff');
 }
 
 

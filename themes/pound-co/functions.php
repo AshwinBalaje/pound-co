@@ -51,6 +51,8 @@ if ( ! function_exists( 'pound_co_setup' ) ) :
 		register_nav_menus(
 			array(
 				'menu-primary' => esc_html__( 'Primary', 'pound-co' ),
+				'menu-secondary' => esc_html__( 'Secondary', 'pound-co' ),
+				'menu-footer' => esc_html__( 'Footer Menu', 'pound-co' ),
 			)
 		);
 

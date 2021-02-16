@@ -1,13 +1,3 @@
-@font-face {
-  font-family: 'Lemon Milk Regular Italic';
-  src: url('../fonts/LEMONMILK-RegularItalic.woff') format('woff');
-}
-
-@font-face {
-  font-family: Lemon Milk Medium Italic;
-  src: url('../fonts/LEMONMILK-MediumItalic.woff');
-}
-
 .sideMenu {
   background-color: white;
   padding: 10px;
@@ -19,7 +9,6 @@
   -moz-box-shadow: 10px 0px 23px -8px rgba(110, 110, 110, 1);
   box-shadow: 10px 0px 23px -8px rgba(110, 110, 110, 1);
 
-
 }
 
 .custom-logo {
@@ -29,8 +18,13 @@
 
 .main-navigation li.menu-item a {
   font-family: 'Lemon Milk Regular Italic';
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   color: black;
+}
+
+#primary-menu {
+  display: flex;
+  flex-direction: column;
 }
 
 .main-navigation li.menu-item a:hover {
