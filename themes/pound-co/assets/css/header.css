@@ -1,14 +1,38 @@
+@font-face {
+  font-family: 'Lemon Milk Regular Italic';
+  src: url('../fonts/LEMONMILK-RegularItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: Lemon Milk Medium Italic;
+  src: url('../fonts/LEMONMILK-MediumItalic.woff');
+}
+
 .sideMenu {
   background-color: white;
+  padding: 10px;
   position: fixed;
   width: 15vw;
   height: 100%;
+  z-index: 99;
   -webkit-box-shadow: 10px 0px 23px -8px rgba(110, 110, 110, 1);
   -moz-box-shadow: 10px 0px 23px -8px rgba(110, 110, 110, 1);
   box-shadow: 10px 0px 23px -8px rgba(110, 110, 110, 1);
+
+
 }
 
 .custom-logo {
   margin-bottom: 50px;
-  padding: 20px 20px 0 20px;
+  padding: 10px 10px 0 10px;
+}
+
+.main-navigation li.menu-item a {
+  font-family: 'Lemon Milk Regular Italic';
+  font-size: 1.5vw;
+  color: black;
+}
+
+.main-navigation li.menu-item a:hover {
+  font-family: 'Lemon Milk Medium Italic';
 }

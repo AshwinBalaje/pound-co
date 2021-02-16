@@ -43,8 +43,7 @@
 				);
 				?>
 			</nav><!-- #site-navigation -->
-		</header><!-- #masthead -->
-		<?php get_sidebar(); ?>		
+		</header><!-- #masthead -->	
 	</div>
 
 
