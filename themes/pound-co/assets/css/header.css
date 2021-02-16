@@ -1,0 +1,14 @@
+.sideMenu {
+  background-color: white;
+  position: fixed;
+  width: 15vw;
+  height: 100%;
+  -webkit-box-shadow: 10px 0px 23px -8px rgba(110, 110, 110, 1);
+  -moz-box-shadow: 10px 0px 23px -8px rgba(110, 110, 110, 1);
+  box-shadow: 10px 0px 23px -8px rgba(110, 110, 110, 1);
+}
+
+.custom-logo {
+  margin-bottom: 50px;
+  padding: 20px 20px 0 20px;
+}

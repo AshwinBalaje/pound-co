@@ -146,6 +146,10 @@ function pound_co_scripts() {
 	wp_enqueue_style('foundation-style', get_template_directory_uri() . '/assets/css/vendor/foundation.css' );
 	wp_enqueue_script('foundation-script', get_template_directory_uri() . '/assets/js/vendor/foundation.js', array(), false, true );
 
+	//Header
+	wp_enqueue_style('header-style', get_template_directory_uri() . '/assets/css/header.css' );
+
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -166,5 +170,4 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
-
 
