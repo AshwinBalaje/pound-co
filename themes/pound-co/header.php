@@ -26,6 +26,7 @@
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'pound-co' ); ?></a>
 
 	<header id="masthead" class="site-header">
+		
 		<div class="site-branding">
 			<?php
 			the_custom_logo();
@@ -50,7 +51,7 @@
 			<?php
 			wp_nav_menu(
 				array(
-					'theme_location' => 'menu-1',
+					'theme_location' => 'menu-primary',
 					'menu_id'        => 'primary-menu',
 				)
 			);

@@ -125,7 +125,7 @@ function pound_co_widgets_init() {
 	register_sidebar(
 		array(
 			'name'          => esc_html__( 'Sidebar', 'pound-co' ),
-			'id'            => 'sidebar-1',
+			'id'            => 'sidebar',
 			'description'   => esc_html__( 'Add widgets here.', 'pound-co' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
@@ -141,20 +141,16 @@ add_action( 'widgets_init', 'pound_co_widgets_init' );
  */
 function pound_co_scripts() {
 	wp_enqueue_style( 'pound-co-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'pound-co-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'pound-co-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	//Foundation
+	wp_enqueue_style('foundation-style', get_template_directory_uri() . '/assets/css/vendor/foundation.css' );
+	wp_enqueue_script('foundation-script', get_template_directory_uri() . '/assets/js/vendor/foundation.js', array(), false, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'pound_co_scripts' );
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -171,10 +167,4 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/customizer.php';
 
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
 
