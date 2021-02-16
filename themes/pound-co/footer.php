@@ -23,8 +23,13 @@
 					)
 				);
 				?>
-			
-				<p id="footer-text">©2021 Pound & Company.</p>
+				<div class="social-box">
+					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/instagram.png" class="social-icon" alt="Instagram" id="instagram">
+					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/youtube.png" class="social-icon" alt="YouTube" id="youtube">
+					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/tiktok.png" class="social-icon" alt="TikTok" id="tiktok">
+					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/twitter.png" class="social-icon" alt="Twitter" id="twitter">
+				</div>
+				<p id="footer-text">©<?php echo date("Y"); ?> Pound & Company.</p>
 			</div><!-- .site-info -->
 		</footer><!-- #colophon -->
 		

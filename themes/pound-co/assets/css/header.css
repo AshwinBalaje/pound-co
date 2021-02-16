@@ -4,7 +4,7 @@
   position: fixed;
   width: 15vw;
   height: 100%;
-  z-index: 99;
+  z-index: 9;
   -webkit-box-shadow: 10px 0px 23px -8px rgba(110, 110, 110, 1);
   -moz-box-shadow: 10px 0px 23px -8px rgba(110, 110, 110, 1);
   box-shadow: 10px 0px 23px -8px rgba(110, 110, 110, 1);
@@ -18,7 +18,7 @@
 
 .main-navigation li.menu-item a {
   font-family: 'Lemon Milk Regular Italic';
-  font-size: 1.2vw;
+  font-size: 1.15vw;
   color: black;
 }
 
