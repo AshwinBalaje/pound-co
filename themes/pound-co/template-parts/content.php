@@ -27,7 +27,8 @@
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
-	</header><!-- .entry-header -->
+	</header><!-- .entry-header --> 
+	
 
 	<?php pound_co_post_thumbnail(); ?>
 
