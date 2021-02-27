@@ -1,3 +1,10 @@
+.is-style-poundco-button1 {
+    background-color: #ea735c;
+    color: white;
+    border-radius: 0;
+    font-family: 'Lemon Milk Bold';
+}
+
 .is-style-poundco-button1>.wp-block-button__link {
     background-color: #ea735c;
     color: white;
@@ -43,4 +50,14 @@
 
 .is-style-lemon-bold-italic {
     font-family: 'Lemon Milk Bold Italic';
+}
+
+
+
+.wsf-button {
+    background-color: #ea735c;
+    color: white;
+    border-radius: 0;
+    border: none;
+    font-family: 'Lemon Milk Bold';
 }
