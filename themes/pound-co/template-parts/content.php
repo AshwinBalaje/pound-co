@@ -13,19 +13,7 @@
 	
 	<div class="grid-container full">
 		<div class="grid-x grid-padding-x">
-			<div class="red large-1 small-1">1</div>
-			<div class="blue large-1 small-1">2</div>
-			<div class="red large-1 small-1">3</div>
-			<div class="blue large-1 small-1">4</div>
-			<div class="red large-1 small-1">5</div>
-			<div class="blue large-1 small-1">6</div>
-			<div class="red large-1 small-1">7</div>
-			<div class="blue large-1 small-1">8</div>
-			<div class="red large-1 small-1">9</div>
-			<div class="blue large-1 small-1">10</div>
-			<div class="red large-1 small-1">11</div>
-			<div class="blue large-1 small-1">12</div>
-
+			
 			<header class="entry-header small-12 large-12">
 				<?php
 						
@@ -42,7 +30,7 @@
 				if ( is_singular() ) :
 					the_title( '<h1 class="entry-title font-lemon-bold-italic"">', '</h1>' );
 				else :
-					the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+					the_title( '<h2 class="entry-title font-lemon-bold-italic"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 				endif;
 
 				?>

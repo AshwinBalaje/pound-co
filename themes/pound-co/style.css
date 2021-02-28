@@ -1046,6 +1046,11 @@ textarea {
 
 .site-main {
 	margin-left: 15vw;
+	margin-top: -25px;
+}
+
+.grid-container {
+	margin-top: 25px;
 }
 
 .entry-meta {
