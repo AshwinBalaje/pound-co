@@ -25,13 +25,7 @@ if ( ! function_exists( 'pound_co_posted_on' ) ) :
 			esc_html( get_the_modified_date() )
 		);
 
-		$posted_on = sprintf(
-			/* translators: %s: post date. */
-			esc_html_x( '%s', 'post date', 'pound-co' ),
-			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-		);
-
-		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<span class="posted-on">' . $time_string . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	}
 endif;
@@ -111,7 +105,7 @@ if ( ! function_exists( 'pound_co_post_thumbnail' ) ) :
 		if ( is_singular() ) :
 			?>
 
-			<div class="post-thumbnail">
+			<div class="post-thumbnail large-offset-3 small-offset-1 small-10 large-6">
 				<?php the_post_thumbnail(); ?>
 			</div><!-- .post-thumbnail -->
 
