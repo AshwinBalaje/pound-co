@@ -1097,6 +1097,11 @@ textarea {
 	width: auto;
 }
 
+.posts-all-title {
+	text-align: center;
+	margin-top: 3vh;
+}
+
 .posts-all-box {
 	padding: 5vw;
 }
