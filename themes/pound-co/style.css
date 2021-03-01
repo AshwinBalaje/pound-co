@@ -1074,3 +1074,20 @@ textarea {
 .blue {
 	background-color: blue;
 }
+
+.blog-btn-area {
+	display: flex;
+	justify-content: center;
+}
+
+.blog-back-btn {
+	background-color: #ea735c;
+    color: white;
+    border-radius: 0;
+    font-family: 'Lemon Milk Bold';
+	padding: 30px;
+	cursor: pointer;
+
+	margin-top: 3vh;
+	margin-bottom: 6vh;
+}
