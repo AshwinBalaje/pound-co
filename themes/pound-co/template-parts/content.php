@@ -42,32 +42,45 @@
 
 			<div class="entry-content large-8 large-offset-2 small-12 cell">
 				<?php
-				the_content(
-					sprintf(
-						wp_kses(
-							/* translators: %s: Name of current post. Only visible to screen readers */
-							__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'pound-co' ),
-							array(
-								'span' => array(
-									'class' => array(),
-								),
-							)
-						),
-						wp_kses_post( get_the_title() )
-					)
-				);
 
-				wp_link_pages(
-					array(
-						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'pound-co' ),
-						'after'  => '</div>',
-					)
-				);
+				if ( is_singular() ) :
+					the_content(
+						sprintf(
+							wp_kses(
+								/* translators: %s: Name of current post. Only visible to screen readers */
+								__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'pound-co' ),
+								array(
+									'span' => array(
+										'class' => array(),
+									),
+								)
+							),
+							wp_kses_post( get_the_title() )
+						)
+					);
+	
+					wp_link_pages(
+						array(
+							'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'pound-co' ),
+							'after'  => '</div>',
+						)
+					);
+				else :
+					
+				endif;
+
 				?>
 			</div><!-- .entry-content -->
 
-			<a href="/blog" class="blog-btn-area small-4 small-offset-4"><button class="blog-back-btn is-style-poundco-button1 large-12 small-12">Go Back To Blog</button></a>
+			<?php
 
+			if ( is_singular() ) :
+				echo '<a href="/blog" class="blog-btn-area small-4 small-offset-4"><button class="blog-back-btn is-style-poundco-button1 large-12 small-12">Go Back To Blog</button></a>';
+			else :
+				
+			endif;
+				
+			?>
 
 		</div>
 	</div>	
