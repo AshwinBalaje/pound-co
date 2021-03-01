@@ -1055,12 +1055,24 @@ textarea {
 
 .entry-meta {
 	text-align: center;
+}
+
+.entry-meta-single {
 	padding-top: 6vh;
 }
 
+.entry-meta-all {}
+
 .entry-title {
 	text-align: center;
+}
+
+.entry-title-single {
 	margin-bottom: 3vh;
+}
+
+.entry-title-all {
+	margin-top: 3vh;
 }
 
 .entry-content {
@@ -1071,6 +1083,13 @@ textarea {
 .post-thumbnail {
 	text-align: center;
 }
+
+.post-thumbnail-single {}
+
+.post-thumbnail-all {
+	padding-top: 6vh;
+}
+
 
 .red {
 	background-color: red;

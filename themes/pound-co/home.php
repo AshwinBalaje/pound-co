@@ -16,7 +16,7 @@ get_header();
                 if ( is_home() && ! is_front_page() ) :
                     ?>
                     <header>
-                        <h1 class="page-title screen-reader-text" style="display:none;">Pound&Co Blog</h1>
+                        <h1 class="page-title screen-reader-text">Pound&Co Blog</h1>
                     </header>
                     <?php
                 endif;

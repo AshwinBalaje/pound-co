@@ -14,32 +14,53 @@
 	<div class="grid-container full">
 		<div class="grid-x grid-padding-x">
 			
+			<?php  //all posts thumbnail
+			if ( is_singular() ) :
+				
+			else:
+				pound_co_post_thumbnail(); 	
+			endif;
+			?>
+
 			<header class="entry-header small-12 large-12">
-				<?php
-						
-				if ( 'post' === get_post_type() ) :
-					?>
-					<div class="entry-meta font-lemon-regular-italic">
-						<?php
-						pound_co_posted_on();
-						?>
-					</div><!-- .entry-meta -->
-				<?php endif; ?>
+				
 				<?php
 						
 				if ( is_singular() ) :
-					the_title( '<h1 class="entry-title font-lemon-bold-italic"">', '</h1>' );
+					if ( 'post' === get_post_type() ) :
+						?>
+						<div class="entry-meta entry-meta-single font-lemon-regular-italic">
+							<?php
+							pound_co_posted_on();
+							?>
+						</div><!-- .entry-meta -->
+					<?php endif; ?>
+					<?php
+					the_title( '<h1 class="entry-title entry-title-single font-lemon-bold-italic"">', '</h1>' );
+				
+				
+				
 				else :
-					the_title( '<h2 class="entry-title font-lemon-bold-italic"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+					the_title( '<h2 class="entry-title entry-title-all font-lemon-bold-italic"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+					if ( 'post' === get_post_type() ) :
+						?>
+						<div class="entry-meta entry-meta-all font-lemon-regular-italic">
+							<?php
+							pound_co_posted_on();
+							?>
+						</div><!-- .entry-meta -->
+					<?php endif; ?><?php
 				endif;
 
 				?>
 			</header><!-- .entry-header -->
 		
-			<?php pound_co_post_thumbnail(); ?>
-		
-
-
+			<?php //singular post thumbnail
+			if ( is_singular() ) :
+				pound_co_post_thumbnail(); 
+			endif;
+			?>
+	
 			<div class="entry-content large-8 large-offset-2 small-12 cell">
 				<?php
 
@@ -75,9 +96,7 @@
 			<?php
 
 			if ( is_singular() ) :
-				echo '<a href="/blog" class="blog-btn-area small-4 small-offset-4"><button class="blog-back-btn is-style-poundco-button1 large-12 small-12">Go Back To Blog</button></a>';
-			else :
-				
+				echo '<a href="/blog" class="blog-btn-area small-4 small-offset-4"><button class="blog-back-btn is-style-poundco-button1 large-12 small-12">Go Back To Blog</button></a>';	
 			endif;
 				
 			?>

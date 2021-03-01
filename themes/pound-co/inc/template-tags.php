@@ -105,13 +105,13 @@ if ( ! function_exists( 'pound_co_post_thumbnail' ) ) :
 		if ( is_singular() ) :
 			?>
 
-			<div class="post-thumbnail large-offset-3 small-offset-1 small-10 large-6">
+			<div class="post-thumbnail post-thumbnail-single large-offset-3 small-offset-1 small-10 large-6">
 				<?php the_post_thumbnail(); ?>
 			</div><!-- .post-thumbnail -->
 
 		<?php else : ?>
 
-			<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+			<a class="post-thumbnail post-thumbnail-all large-offset-3 small-offset-1 small-10 large-6" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 				<?php
 					the_post_thumbnail(
 						'post-thumbnail',
