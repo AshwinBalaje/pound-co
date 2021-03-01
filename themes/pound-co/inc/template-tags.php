@@ -111,7 +111,7 @@ if ( ! function_exists( 'pound_co_post_thumbnail' ) ) :
 
 		<?php else : ?>
 
-			<a class="post-thumbnail post-thumbnail-all large-offset-3 small-offset-1 small-10 large-6" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+			<a class="post-thumbnail post-thumbnail-all" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 				<?php
 					the_post_thumbnail(
 						'post-thumbnail',

@@ -1087,7 +1087,18 @@ textarea {
 .post-thumbnail-single {}
 
 .post-thumbnail-all {
-	padding-top: 6vh;
+	display: flex;
+	justify-content: center;
+}
+
+.post-thumbnail-all>img {
+	padding-top: 3vh;
+	height: 35vh;
+	width: auto;
+}
+
+.posts-all-box {
+	padding: 5vw;
 }
 
 
