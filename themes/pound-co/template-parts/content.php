@@ -40,7 +40,7 @@
 		
 
 
-			<div class="entry-content large-10 large-offset-1 small-12 cell">
+			<div class="entry-content large-8 large-offset-2 small-12 cell">
 				<?php
 				the_content(
 					sprintf(

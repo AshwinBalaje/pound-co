@@ -1063,6 +1063,11 @@ textarea {
 	margin-bottom: 3vh;
 }
 
+.entry-content {
+	margin-top: 4vh;
+	font-size: 18px;
+}
+
 .post-thumbnail {
 	text-align: center;
 }
