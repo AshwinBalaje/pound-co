@@ -1046,11 +1046,11 @@ textarea {
 
 .site-main {
 	margin-left: 15vw;
-	margin-top: -25px;
+	margin-top: -4vh;
 }
 
 .grid-container {
-	margin-top: 25px;
+	margin-top: 2vw;
 }
 
 .entry-meta {
@@ -1087,9 +1087,9 @@ textarea {
 
 .blog-back-btn {
 	background-color: #ea735c;
-    color: white;
-    border-radius: 0;
-    font-family: 'Lemon Milk Bold';
+	color: white;
+	border-radius: 0;
+	font-family: 'Lemon Milk Bold';
 	padding: 30px;
 	cursor: pointer;
 
