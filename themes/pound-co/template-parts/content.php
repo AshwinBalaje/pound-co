@@ -65,7 +65,7 @@
 					?>
 				</div><!-- .entry-content -->
 
-				<a href="/blog" class="blog-btn-area small-4 small-offset-4"><button class="blog-back-btn is-style-poundco-button1 large-12 small-12">Go Back To Blog</button></a>';	
+				<a href="/blog" class="blog-btn-area small-4 small-offset-4"><button class="blog-back-btn is-style-poundco-button1 large-12 small-12">Go Back To Blog</button></a>
 			
 			<?php
 			else:
