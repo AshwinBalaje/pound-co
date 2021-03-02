@@ -144,10 +144,82 @@
     padding-left: 10px;
 }
 
-#post-72 {
-    margin-top: 6vh;
+#post-72,
+#post-73,
+#post-74 {
+    padding-top: 4vh;
 }
 
 .single-product {
-    margin-top: 6vh;
+    margin-top: 4vh;
+}
+
+th.product-price,
+th.product-name,
+th.product-quantity,
+th.product-subtotal {
+    font-family: 'Lemon Milk Regular Italic';
+}
+
+
+td.product-name {
+    font-family: 'Bahnschrift Regular';
+    color: black;
+}
+
+#coupon_code {
+    width: 6vw;
+    margin: 0 10px;
+}
+
+.coupon.button {
+    font-family: 'Bahnschrift Regular';
+    background-color: #dfdcde;
+    color: #515151;
+}
+
+#customer_details label {
+    font-family: 'Bahnschrift Regular';
+    color: #515151;
+}
+
+
+
+
+.woocommerce-message {
+    border-top-color: #ea735c;
+}
+
+.woocommerce-message::before {
+    content: "\e015";
+    color: #ea735c;
+}
+
+
+div.cart_totals h2 {
+    font-size: 24px;
+    font-family: 'Lemon Milk Bold';
+}
+
+div #tab-description h2,
+section.related h2 {
+    font-size: 28px;
+    font-family: 'Lemon Milk Medium Italic';
+    margin-bottom: 15px;
+}
+
+div #tab-description p {
+    margin-bottom: 60px;
+}
+
+.woocommerce-info {
+    border-top-color: #ea735c;
+}
+
+.woocommerce-info::before {
+    color: #ea735c;
+}
+
+.showcoupon {
+    color: #ea735c;
 }
