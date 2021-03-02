@@ -5444,7 +5444,8 @@ tbody td {
 
 tbody tr:nth-child(even) {
   border-bottom: 0;
-  background-color: #f1f1f1;
+  border: none;
+  background-color: #ffffff;
 }
 
 table.unstriped tbody {

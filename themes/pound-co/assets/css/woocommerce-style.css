@@ -1,3 +1,96 @@
 .woocommerce div.product .product_title {
     font-family: 'Lemon Milk Bold';
 }
+
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+    color: #777777;
+    font-size: 1.25em
+}
+
+.woocommerce div.product form.cart div.quantity {
+    float: none;
+    margin: 0 4px 0 0
+}
+
+
+
+
+.woocommerce #respond input#submit.alt,
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt {
+    background-color: #ea735c;
+    padding: 20px 30px;
+    border-radius: 0;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Lemon Milk Medium';
+}
+
+.woocommerce #respond input#submit.alt:hover,
+.woocommerce a.button.alt:hover,
+.woocommerce button.button.alt:hover,
+.woocommerce input.button.alt:hover {
+    background-color: #e74a2a;
+    border-radius: 0;
+    color: #fff
+}
+
+.woocommerce #respond input#submit.alt.disabled,
+.woocommerce #respond input#submit.alt.disabled:hover,
+.woocommerce #respond input#submit.alt:disabled,
+.woocommerce #respond input#submit.alt:disabled:hover,
+.woocommerce #respond input#submit.alt:disabled[disabled],
+.woocommerce #respond input#submit.alt:disabled[disabled]:hover,
+.woocommerce a.button.alt.disabled,
+.woocommerce a.button.alt.disabled:hover,
+.woocommerce a.button.alt:disabled,
+.woocommerce a.button.alt:disabled:hover,
+.woocommerce a.button.alt:disabled[disabled],
+.woocommerce a.button.alt:disabled[disabled]:hover,
+.woocommerce button.button.alt.disabled,
+.woocommerce button.button.alt.disabled:hover,
+.woocommerce button.button.alt:disabled,
+.woocommerce button.button.alt:disabled:hover,
+.woocommerce button.button.alt:disabled[disabled],
+.woocommerce button.button.alt:disabled[disabled]:hover,
+.woocommerce input.button.alt.disabled,
+.woocommerce input.button.alt.disabled:hover,
+.woocommerce input.button.alt:disabled,
+.woocommerce input.button.alt:disabled:hover,
+.woocommerce input.button.alt:disabled[disabled],
+.woocommerce input.button.alt:disabled[disabled]:hover {
+    background-color: #eb9685;
+    color: #fff
+}
+
+/**ON SALE ICON*/
+.woocommerce span.onsale {
+    min-height: 3.236em;
+    min-width: 3.236em;
+    padding: .202em;
+    font-size: 1em;
+    font-weight: 700;
+    position: absolute;
+    text-align: center;
+    line-height: 3.236;
+    top: -.5em;
+    left: -.5em;
+    margin: 0;
+    border-radius: 100%;
+    background-color: #ea735c;
+    color: #fff;
+    font-size: .857em;
+    z-index: 9;
+    font-family: 'Bahnschrift Regular';
+}
+
+
+/*PRODUCT VARIATION BOX**/
+.woocommerce div.product form.cart .variations {
+    margin-bottom: 1em;
+    border: none;
+    width: 100%;
+    border-collapse: collapse;
+}
