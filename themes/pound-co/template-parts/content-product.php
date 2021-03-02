@@ -17,16 +17,7 @@
             <header class="entry-header small-12 large-12">
                 
                 <?php
-                if ( 'post' === get_post_type() ) :
-                    ?>
-                    <div class="entry-meta entry-meta-single font-lemon-regular-italic">
-                        <?php
-                        pound_co_posted_on();
-                        ?>
-                    </div><!-- .entry-meta -->
-                <?php endif; ?>
-                <?php
-                the_title( '<h1 class="entry-title entry-title-single font-lemon-bold-italic"">', '</h1>' );
+                the_title( '<h1 class="entry-title entry-title-product-single font-lemon-bold-italic"">', '</h1>' );
                 
                 ?>
             </header><!-- .entry-header -->
