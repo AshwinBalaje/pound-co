@@ -14,9 +14,7 @@
     <div class="grid-container full">
         <div class="grid-x grid-padding-x">
             
-            <?php pound_co_post_thumbnail(); ?>
-
-            <div class="entry-content large-8 large-offset-2 small-12 cell">
+            <div class="entry-content large-10 large-offset-1 small-12 cell">
                 <?php
 
                 the_content(
