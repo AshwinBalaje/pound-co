@@ -154,6 +154,9 @@ function pound_co_scripts() {
 	//Footer
 	wp_enqueue_style('footer-style', get_template_directory_uri() . '/assets/css/footer.css' );
 
+	//WooCommerce Styling
+	wp_enqueue_style('footer-style', get_template_directory_uri() . '/assets/css/woocommerce-style.css' );
+
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
