@@ -1063,11 +1063,10 @@ textarea {
 
 .entry-meta-all {}
 
-.entry-title {
-	text-align: center;
-}
+.entry-title {}
 
 .entry-title-single {
+	text-align: center;
 	margin-bottom: 3vh;
 }
 
@@ -1076,6 +1075,7 @@ textarea {
 }
 
 .entry-title-all {
+	text-align: center;
 	margin-top: 3vh;
 }
 

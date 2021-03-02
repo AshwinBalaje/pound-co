@@ -14,14 +14,6 @@
     <div class="grid-container full">
         <div class="grid-x grid-padding-x">
             
-            <header class="entry-header small-12 large-12">
-                
-                <?php
-                the_title( '<h1 class="entry-title entry-title-product-single font-lemon-bold-italic"">', '</h1>' );
-                
-                ?>
-            </header><!-- .entry-header -->
-        
             <?php pound_co_post_thumbnail(); ?>
 
             <div class="entry-content large-8 large-offset-2 small-12 cell">
