@@ -1089,7 +1089,9 @@ textarea {
 	text-align: center;
 }
 
-.post-thumbnail-single {}
+.post-thumbnail-single {
+	margin-bottom: 3vh;
+}
 
 .post-thumbnail-all {
 	display: flex;
@@ -1134,20 +1136,4 @@ textarea {
 	cursor: pointer;
 	margin-top: 3vh;
 	margin-bottom: 6vh;
-}
-
-div.cart_totals h2 {
-	font-size: 24px;
-	font-family: 'Lemon Milk Bold';
-}
-
-div #tab-description h2,
-section.related h2 {
-	font-size: 28px;
-	font-family: 'Lemon Milk Medium Italic';
-	margin-bottom: 15px;
-}
-
-div #tab-description p {
-	margin-bottom: 60px;
 }
