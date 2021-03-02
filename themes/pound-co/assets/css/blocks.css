@@ -1,0 +1,67 @@
+.is-style-poundco-button1 {
+    background-color: #ea735c;
+    color: white;
+    border-radius: 0;
+    font-family: 'Lemon Milk Bold';
+}
+
+.is-style-poundco-button1>.wp-block-button__link {
+    background-color: #ea735c;
+    color: white;
+    border-radius: 0;
+    font-family: 'Lemon Milk Bold';
+}
+
+.is-style-poundco-button2>.wp-block-button__link {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 0;
+    font-family: 'Lemon Milk Bold';
+}
+
+.is-style-blur {
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+}
+
+.is-style-blur p {
+    filter: blur(0px);
+    -webkit-filter: blur(0px);
+}
+
+
+.is-style-bahnschrift {
+    font-family: 'Bahnschrift';
+}
+
+
+.is-style-lemon-medium {
+    font-family: 'Lemon Milk Medium';
+}
+
+.is-style-lemon-medium-italic {
+    font-family: 'Lemon Milk Medium Italic';
+}
+
+.is-style-lemon-medium-italic-centered {
+    font-family: 'Lemon Milk Medium Italic';
+    text-align: center;
+    margin-top: 3vh;
+}
+
+.is-style-lemon-bold {
+    font-family: 'Lemon Milk Bold';
+}
+
+.is-style-lemon-bold-italic {
+    font-family: 'Lemon Milk Bold Italic';
+}
+
+.wsf-button {
+    background-color: #ea735c;
+    color: white;
+    border-radius: 0;
+    border: none;
+    font-family: 'Lemon Milk Bold';
+}
