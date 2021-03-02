@@ -60,6 +60,14 @@ wp.blocks.registerBlockStyle(
 wp.blocks.registerBlockStyle( 
     'core/heading', 
     {
+        name: 'lemon-medium-italic-centered',
+        label: 'Lemon Milk Medium Italic (Centered)'
+    }
+);
+
+wp.blocks.registerBlockStyle( 
+    'core/heading', 
+    {
         name: 'lemon-bold',
         label: 'Lemon Milk Bold'
     }
