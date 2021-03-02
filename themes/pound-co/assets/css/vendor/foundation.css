@@ -334,6 +334,7 @@ textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border-radius: 10px;
 }
 
 [type='text']:focus,
@@ -443,10 +444,11 @@ label>[type='radio'] {
 label {
   display: block;
   margin: 0;
-  font-size: 0.875rem;
+  font-size: 1.25rem;
   font-weight: normal;
   line-height: 1.8;
   color: #0a0a0a;
+  font-family: 'Lemon Milk Regular';
 }
 
 label.middle {
@@ -4106,6 +4108,7 @@ screen and (min-width: 64em) {
 .button.primary[disabled]:focus {
   background-color: #ea735c;
   color: #fefefe;
+  font-size: 1.25rem;
 }
 
 .button.primary:hover,

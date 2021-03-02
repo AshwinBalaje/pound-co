@@ -23,7 +23,6 @@
 .is-style-blur {
     filter: blur(3px);
     -webkit-filter: blur(3px);
-    margin-bottom: 4vh;
 }
 
 .is-style-blur p {
@@ -48,6 +47,7 @@
 .is-style-lemon-medium-italic-centered {
     font-family: 'Lemon Milk Medium Italic';
     text-align: center;
+    margin-top: 3vh;
 }
 
 .is-style-lemon-bold {
