@@ -102,7 +102,7 @@
     display: block;
     font-weight: 400;
     margin-bottom: .5em;
-    font-size: .857em
+    font-size: .857em;
 }
 
 .woocommerce #respond input#submit,
@@ -130,7 +130,6 @@
     font-family: 'Lemon Milk Regular';
 }
 
-
 /*PRODUCT VARIATION BOX**/
 .woocommerce div.product form.cart .variations label {
     padding-left: 10px;
@@ -143,4 +142,12 @@
 
 .woocommerce div.product form.cart table div.quantity {
     padding-left: 10px;
+}
+
+#post-72 {
+    margin-top: 6vh;
+}
+
+.single-product {
+    margin-top: 6vh;
 }
