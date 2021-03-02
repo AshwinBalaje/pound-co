@@ -32,9 +32,9 @@
 .woocommerce a.button.alt:hover,
 .woocommerce button.button.alt:hover,
 .woocommerce input.button.alt:hover {
-    background-color: #e74a2a;
+    background-color: #dfdcde;
+    color: #515151;
     border-radius: 0;
-    color: #fff
 }
 
 .woocommerce #respond input#submit.alt.disabled,
@@ -84,6 +84,50 @@
     font-size: .857em;
     z-index: 9;
     font-family: 'Bahnschrift Regular';
+}
+
+/**Related item text*/
+.woocommerce ul.products li.product .woocommerce-loop-category__title,
+.woocommerce ul.products li.product .woocommerce-loop-product__title,
+.woocommerce ul.products li.product h3 {
+    padding: .5em 0;
+    margin: 0;
+    font-size: 1em;
+    font-family: 'Lemon Milk Medium';
+    color: black;
+}
+
+.woocommerce ul.products li.product .price {
+    color: #777777;
+    display: block;
+    font-weight: 400;
+    margin-bottom: .5em;
+    font-size: .857em
+}
+
+.woocommerce #respond input#submit,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button {
+    font-size: 100%;
+    margin: 0;
+    line-height: 1;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    overflow: visible;
+    padding: .618em 1em;
+    font-weight: 700;
+    border-radius: 0px;
+    left: auto;
+    color: white;
+    background-color: #ea735c;
+    border: 0;
+    display: inline-block;
+    background-image: none;
+    box-shadow: none;
+    text-shadow: none;
+    font-family: 'Lemon Milk Regular';
 }
 
 
