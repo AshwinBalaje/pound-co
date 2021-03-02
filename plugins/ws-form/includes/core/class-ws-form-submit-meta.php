@@ -263,7 +263,7 @@
 						'file_handler' => 'wsform'
 					);
 
-					$file_objects = self::process_signature($field, false, true, $section_repeatable_index, $field_value, $ws_form_submit);
+					$file_objects = self::process_signature($field, $section_repeatable_index, $field_value, $ws_form_submit);
 
 					if($file_objects !== false) {
 
@@ -399,14 +399,9 @@
 		}
 
 		// Process signature
-		public function process_signature($field, $field_required, $form_submit, $section_repeatable_index, $field_value, $ws_form_submit) {
+		public function process_signature($field, $section_repeatable_index, $field_value, $ws_form_submit) {
 
 			if($field_value == '') {
-
-				if($field_required) {
-
-					self::db_throw_error_submit_validation(__('No file was uploaded', 'ws-form'));
-				}
 
 				return false;
 			}

@@ -160,33 +160,38 @@
 </div>
 
 <script>
+
 <?php
 
-	if($form_id > 0) {
-
-		// Get config
-		$json_config = wp_json_encode(WS_Form_Config::get_config(false, array(), true));
-
-		// Get form data
-		try {
-
-			$ws_form_form = New WS_Form_Form();
-			$ws_form_form->id = $form_id;
-			$form_object = $ws_form_form->db_read_published(true);
-			$json_form = wp_json_encode($form_object);
-
-		} catch(Exception $e) {
-
-			$json_form = false;
-		}
+	// Get config
+	$json_config = WS_Form_Config::get_config(false, array(), true);
 ?>
 	// Embed config
-	var wsf_form_json_config = <?php
+	var wsf_form_json_config = {};
+<?php
 
-	echo $json_config;	// phpcs:ignore
+	// Split up config (Fixes HTTP2 error on certain hosting providers that can't handle the full JSON string)
+	foreach($json_config as $key => $config) {
+
+?>	wsf_form_json_config.<?php echo $key; ?> = <?php echo wp_json_encode($config); ?>;
+<?php
+	}
+
 	$json_config = null;
 
-?>;
+	// Get form data
+	try {
+
+		$ws_form_form = New WS_Form_Form();
+		$ws_form_form->id = $form_id;
+		$form_object = $ws_form_form->db_read(true, true);
+		$json_form = wp_json_encode($form_object);
+
+	} catch(Exception $e) {
+
+		$json_form = false;
+	}
+?>
 
 	// Embed form data
 	var wsf_form_json = { <?php
@@ -199,8 +204,5 @@
 		$json_form = null;
 
 ?> };
-<?php
 
-	}
-?>
 </script>

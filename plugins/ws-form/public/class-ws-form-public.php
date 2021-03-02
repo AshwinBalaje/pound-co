@@ -252,10 +252,11 @@
 				(($form_id === false) && ($form_object !== false))
 			) {
 
+				$ws_form_form = New WS_Form_Form();
+
 				if($form_id > 0) {
 
 					// Embed form data (Avoids an API call)
-					$ws_form_form = New WS_Form_Form();
 					$ws_form_form->id = $form_id;
 
 					try {

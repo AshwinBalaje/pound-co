@@ -108,7 +108,7 @@
 					'public' => array(
 
 						'mask_wrapper'	=>	'<div class="tab-content">#groups</div>',
-						'mask_single' 	=> '<div class="#class" id="#id" data-id="#data_id" data-group-index="#data_group_index" role="tabpanel">#label#group</div>',
+						'mask_single' 	=> '<div class="#class" id="#id" data-id="#data_id" data-group-index="#data_group_index" role="tabpanel"#attributes>#label#group</div>',
 						'mask_label' 	=> '<h3>#label</h3>',
 						'class'			=> 'tab-pane',
 						'class_active'	=> 'active',

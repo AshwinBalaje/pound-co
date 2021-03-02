@@ -1993,6 +1993,7 @@
 
 					$submit_id = self::get_object_var($submit, 'id', '');
 					$submit_hash = self::get_object_var($submit, 'hash', '');
+					$submit_token = self::get_object_var($submit, 'token', '');
 
 					$variables['submit_id'] = $submit_id;
 					$variables['submit_user_id'] = self::get_object_var($submit, 'user_id', '');
@@ -2020,7 +2021,7 @@
 						$wsf_hash = rawurlencode(json_encode(array(
 
 							// Save single submit hash
-							array('id' => $form_id, 'hash' => $submit_hash)
+							array('id' => $form_id, 'hash' => $submit_hash, 'token' => $submit_token)
 						)));
 
 						$submit_url = add_query_arg('wsf_hash', $wsf_hash, $referrer);

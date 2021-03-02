@@ -136,7 +136,7 @@
 					'public' => array(
 
 						'mask_wrapper'	=>	'<div class="tabs-content" data-tabs-content="#id">#groups</div>',
-						'mask_single' 	=> '<div class="#class" id="#id" data-id="#data_id" data-group-index="#data_group_index">#label#group</div>',
+						'mask_single' 	=> '<div class="#class" id="#id" data-id="#data_id" data-group-index="#data_group_index"#attributes>#label#group</div>',
 						'mask_label' 	=> '<h3>#label</h3>',
 						'class'			=> 'tabs-panel',
 						'class_active'	=> 'is-active',

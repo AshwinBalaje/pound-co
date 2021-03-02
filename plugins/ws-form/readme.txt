@@ -3,7 +3,7 @@ Contributors: westguard
 Tags: form, contact form, form builder, forms, custom form, accessible form, wsform, wsforms, ws form, ws forms, responsive form, gutenberg form, contact button, contact me, custom contact form, form manager, forms builder, forms creator, captcha, recaptcha, Akismet, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, dotmailer, dotmailer form, mailchimp, mailchimp form, aweber, aweber form, paypal, paypal form, salesforce, stripe, stripe form, drip, drip form, slack, slack form, getresponse, getresponse form, constant contact, constant contact form, email subscription, contact form widget, user registration form, wordpress registration, wordpress login form, data encryption
 Requires at least: 4.4
 Tested up to: 5.6
-Stable tag: 1.8.0
+Stable tag: 1.8.5
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -122,6 +122,24 @@ WS Form references the following third party components:
 For help installing WS Form, please see our [Installation](https://wsform.com/knowledgebase/installation?utm_source=wp_plugins&utm_medium=readme) knowledge base article.
 
 == Changelog ==
+
+= 1.8.5 =
+* Bug Fix: New form default settings
+
+= 1.8.4 =
+* Bug Fix: Required signatures on save
+
+= 1.8.3 =
+* Added: Password visibility toggle icon
+* Added: Email validation via link in email
+* Added: Validate before saving option on save field
+* Bug Fix: Action format at on submission save
+
+= 1.8.2 =
+* Bug Fix: Tab next/previous buttons if tab hidden with conditional logic
+
+= 1.8.1 =
+* Bug Fix: Custom validity removal on hidden fields
 
 = 1.8.0 =
 * Added: Section Library

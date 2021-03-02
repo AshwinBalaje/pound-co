@@ -51,7 +51,8 @@
 				'error_not_supported_audio'				=>	__("Sorry, your browser doesn't support embedded audio.", 'ws-form'),
 				'error_google_map_style_js'				=>	__('Invalid Google Map embedded JSON style declaration', 'ws-form'),
 				'error_file_upload'						=>	__('Error uploading file', 'ws-form'),
-				'error_submit_hash'						=>	__('Invalid submission hash', 'ws-form')
+				'error_submit_hash'						=>	__('Invalid submission hash', 'ws-form'),
+
 			);
 
 			// Add to language array

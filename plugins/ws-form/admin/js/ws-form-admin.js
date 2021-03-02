@@ -2028,6 +2028,7 @@
 		if(obj.hasClass('wsf-group')) { return('group'); }
 		if(obj.hasClass('wsf-section')) { return('section'); }
 		if(obj.hasClass('wsf-field-wrapper')) { return('field'); }
+		if(obj.hasClass('wsf-data-grid-group-tab')) { return('data-grid-group-tab'); }
 		return false;
 	}
 
@@ -11062,10 +11063,17 @@
 
 			case 'group' :
 
-				// Add editing class to tab
+				// Add cancel class to tab
 				$('.wsf-group-tab[data-id="' + object_id + '"]').addClass('wsf-ui-cancel');
 
 				break;
+
+			case 'data-grid-group-tab' :
+
+				// Add cancel class to tab content
+				$($('a', obj).attr('href')).addClass('wsf-ui-cancel');
+
+				break;			
 		}
 
 		for(var key in buttons) {
@@ -11147,10 +11155,17 @@
 
 					case 'group' :
 
-						// Add editing class to tab
+						// Remove cancel class from tab
 						$('.wsf-group-tab[data-id="' + object_id + '"]').removeClass('wsf-ui-cancel');
 
 						break;
+
+					case 'data-grid-group-tab' :
+
+						// Remove cancel class from tab content
+						$($('a', obj).attr('href')).removeClass('wsf-ui-cancel');
+
+						break;			
 				}
 			});
 
@@ -13416,6 +13431,8 @@
 
 					}, false, true);	// Bypass loader
 				});
+
+				obj_action.siblings('tr.wsf-ui-cancel').removeClass('wsf-ui-cancel');
 			});
 
 			// Toggle submit action row
@@ -13550,7 +13567,7 @@
 
 		// Header row
 		sidebar_actions_html += '<thead><tr>';
-		sidebar_actions_html += '<th width="16">' + this.language('submit_actions_column_index') + '</th>';
+		sidebar_actions_html += '<th width="16" style="text-align: center;">' + this.language('submit_actions_column_index') + '</th>';
 		sidebar_actions_html += '<th>' + this.language('submit_actions_column_action') + '</th>';
 		sidebar_actions_html += '<th></th>';
 		sidebar_actions_html += '<th></th>';
@@ -13588,7 +13605,7 @@
 			sidebar_actions_html += '<tr>';
 
 			// Action column - Index
-			sidebar_actions_html += '<td>' + (submit_action_index + 1) + '</td>';
+			sidebar_actions_html += '<td style="text-align: center;">' + (submit_action_index + 1) + '</td>';
 
 			// Action column - Label 
 			sidebar_actions_html += '<td>' + this.html_encode(submit_action_label) + '</td>';

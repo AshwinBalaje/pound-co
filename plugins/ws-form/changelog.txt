@@ -1,5 +1,23 @@
 == Changelog ==
 
+= 1.8.5 =
+* Bug Fix: New form default settings
+
+= 1.8.4 =
+* Bug Fix: Required signatures on save
+
+= 1.8.3 =
+* Added: Password visibility toggle icon
+* Added: Email validation via link in email
+* Added: Validate before saving option on save field
+* Bug Fix: Action format at on submission save
+
+= 1.8.2 =
+* Bug Fix: Tab next/previous buttons if tab hidden with conditional logic
+
+= 1.8.1 =
+* Bug Fix: Custom validity removal on hidden fields
+
 = 1.8.0 =
 * Added: Section Library
 * Added: Section Library (Pre-built and 'My Sections' feature)

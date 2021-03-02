@@ -10,7 +10,7 @@
 	 * Plugin Name:       WS Form
 	 * Plugin URI:        https://wsform.com/
 	 * Description:       Build Better WordPress Forms
-	 * Version:           1.8.0
+	 * Version:           1.8.5
 	 * Author:            WS Form
 	 * Author URI:        https://wsform.com/
 	 * License:           GPL-2.0+
@@ -34,7 +34,7 @@
 
 		// Constants
 		define('WS_FORM_NAME', 'ws-form');
-		define('WS_FORM_VERSION', '1.8.0');
+		define('WS_FORM_VERSION', '1.8.5');
 		define('WS_FORM_NAME_PRESENTABLE', 'WS Form');
 		define('WS_FORM_EDITION', 'basic');
 		define('WS_FORM_PLUGIN_BASENAME_COUNTERPART', 'ws-form-pro/ws-form.php');

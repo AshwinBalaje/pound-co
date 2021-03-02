@@ -62,6 +62,10 @@
 			// Get form hash
 			$this->ws_form_submit->hash = self::api_get_hash($parameters);
 
+			// Get form token
+			$this->ws_form_submit->token = self::api_get_token($parameters);
+			if(empty($this->ws_form_submit->token)) { $this->ws_form_submit->token = false; }
+
 			try {
 
 				// Send JSON response
@@ -220,6 +224,10 @@
 			// Serialize actions (We need to do this because the actions are sent to us as an array)
 			if(isset($submit_object->actions) && is_array($submit_object->actions)) {
 
+				// Convert objects to arrays to match format used throughout WS Form
+				$submit_object->actions = json_decode(json_encode($submit_object->actions), true);
+
+				// Serialize
 				$submit_object->actions = serialize($submit_object->actions);
 			}
 
@@ -523,7 +531,13 @@
 			return WS_Form_Common::get_query_var_nonce('wsf_hash', '', $parameters, true);
 		}
 
-		// Get hash
+		// Get token
+		public function api_get_token($parameters) {
+
+			return WS_Form_Common::get_query_var_nonce('wsf_token', '', $parameters, true);
+		}
+
+		// Get action index
 		public function api_get_action_index($parameters) {
 
 			return WS_Form_Common::get_query_var_nonce('action_index', 0, $parameters);

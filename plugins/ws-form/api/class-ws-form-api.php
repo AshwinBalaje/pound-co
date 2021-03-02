@@ -290,6 +290,8 @@
 
 			register_rest_route(WS_FORM_RESTFUL_NAMESPACE, '/submit/hash/(?P<wsf_hash>[a-zA-Z0-9]+)/', array('methods' => 'GET', 'callback' => array($plugin_api_submit, 'api_get_by_hash'), 'permission_callback' => function () { return true; }));
 
+			register_rest_route(WS_FORM_RESTFUL_NAMESPACE, '/submit/hash/(?P<wsf_hash>[a-zA-Z0-9]+)/(?P<wsf_token>[a-zA-Z0-9]+)/', array('methods' => 'GET', 'callback' => array($plugin_api_submit, 'api_get_by_hash'), 'permission_callback' => function () { return true; }));
+
 			register_rest_route(WS_FORM_RESTFUL_NAMESPACE, '/submit/(?P<submit_id>[\d]+)/starred/on/', array('methods' => 'POST', 'callback' => array($plugin_api_submit, 'api_put_starred_on'), 'permission_callback' => function () { return WS_Form_Common::can_user('edit_submission'); }));
 
 			register_rest_route(WS_FORM_RESTFUL_NAMESPACE, '/submit/(?P<submit_id>[\d]+)/starred/off/', array('methods' => 'POST', 'callback' => array($plugin_api_submit, 'api_put_starred_off'), 'permission_callback' => function () { return WS_Form_Common::can_user('edit_submission'); }));

@@ -429,7 +429,7 @@
 
 			// Get submit hash
 			$hash = WS_Form_Common::get_query_var_nonce('hash', '', $parameters);
-			if($hash == '' || (strlen($hash) != 32)) { self::api_throw_error(__('Hash not specified', 'ws-form')); }
+			if(!WS_Form_Common::check_submit_hash($hash)) { self::api_throw_error(__('Hash not specified', 'ws-form')); }
 
 			// Get field ID
 			$field_id = intval(WS_Form_Common::get_query_var_nonce('field_id', '', $parameters));

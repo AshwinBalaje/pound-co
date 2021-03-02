@@ -7,7 +7,7 @@
 
 			// These are set here to avoid problems if someone has both plugins installed and migrates from basic to PRO without de-activating the basic edition first. This ensures the PRO options are set up.
 			$ws_form_edition = 'basic';
-			$ws_form_version = '1.8.0';
+			$ws_form_version = '1.8.5';
 
 			$run_version_check = true;
 
@@ -53,6 +53,9 @@
 
 			// Initialize roles and capabilities
 			self::capabilities_init();
+
+			// Run action
+			do_action('wsf_activate');
 		}
 
 		private static function database_init() {
@@ -238,13 +241,16 @@
 				starred tinyint(1) DEFAULT 0 NOT NULL,
 				viewed tinyint(1) DEFAULT 0 NOT NULL,
 				encrypted tinyint(1) DEFAULT 0 NOT NULL,
+				token char(32) NOT NULL,
+				token_validated tinyint(1) DEFAULT 0 NOT NULL,
 				PRIMARY KEY  (id),
 				KEY form_id (form_id),
 				KEY date_added (date_added),
 				KEY date_expire (date_expire),
 				KEY user_id (user_id),
 				KEY viewed (viewed),
-				KEY hash (hash)
+				KEY hash (hash),
+				KEY token (token)
 			) $charset_collate;";
 			dbDelta($table_sql);
 

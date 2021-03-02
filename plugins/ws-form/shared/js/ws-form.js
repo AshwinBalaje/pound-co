@@ -129,6 +129,10 @@
 		// Hash
 		this.hash = '';
 
+		// Token
+		this.token = '';
+		this.token_validated = false;
+
 		// Form locking
 		this.form_post_locked = false;
 
@@ -633,16 +637,28 @@
 			class_array.push(framework_groups['class_active']);
 		}
 
+		// Attributes
+		var attributes_array = [];
+
 		// Class - Hidden
 		if(!this.is_admin) {
 
 			var hidden = !this.is_admin && (this.get_object_meta_value(group, 'hidden', '') == 'on') ? true : false;
-			if(hidden) { class_array.push('wsf-group-hidden'); }
+			if(hidden) { attributes_array.push('data-wsf-group-hidden'); }
 		}
 
 		// Parse wrapper tabs content
 		var mask = (use_mask ? framework_groups['mask_single'] : '#group');
-		var mask_values = {'class': class_array.join(' '), 'id': this.form_id_prefix + 'group-' + group_id, 'data_id': group.id, 'data_group_index': group_index, 'group': sections_html, 'label': label_html_parsed};
+		var mask_values = {
+
+			'attributes': ((attributes_array.length > 0) ? ' ' : '') + attributes_array.join(' '),
+			'class': class_array.join(' '),
+			'id': this.form_id_prefix + 'group-' + group_id,
+			'data_id': group.id,
+			'data_group_index': group_index,
+			'group': sections_html,
+			'label': label_html_parsed
+		};
 
 		var group_html_parsed = (use_mask ? this.comment_html(this.language('comment_group') + ': ' + group_label) : '') + this.mask_parse(mask, mask_values) + (use_mask ? this.comment_html(this.language('comment_group') + ': ' + group_label, true) : '');
 
@@ -750,7 +766,7 @@
 		}
 
 		// Attributes
-		var attributes = [];
+		var attributes_array = [];
 
 		// Get current framework
 		var framework_type = this.is_admin ? ws_form_settings.framework_admin : $.WS_Form.settings_plugin.framework;
@@ -763,8 +779,8 @@
 		// Is section repeatable?
 		if(section_repeatable && !this.is_admin) {
 
-			attributes.push('data-repeatable');
-			attributes.push('data-repeatable-index="' + section_repeatable_index + '"');
+			attributes_array.push('data-repeatable');
+			attributes_array.push('data-repeatable-index="' + section_repeatable_index + '"');
 		}
 
 		// Add any base classes
@@ -814,11 +830,11 @@
 
 			// Disabled
 			var disabled_section = this.get_object_meta_value(section, 'disabled_section', '');
-			if(disabled_section == 'on') { attributes.push('disabled aria-disabled="true"'); }
+			if(disabled_section == 'on') { attributes_array.push('disabled aria-disabled="true"'); }
 
 			// Hidden
 			var hidden_section = this.get_object_meta_value(section, 'hidden_section', '');
-			if(hidden_section == 'on') { attributes.push('style="display:none;" aria-live="polite" aria-hidden="true"'); }
+			if(hidden_section == 'on') { attributes_array.push('style="display:none;" aria-live="polite" aria-hidden="true"'); }
 		}
 
 		// HTML
@@ -828,7 +844,7 @@
 		var mask = framework_sections['mask_single'];
 		var mask_values = {
 
-			'attributes': ((attributes.length > 0) ? ' ' : '') + attributes.join(' '),
+			'attributes': ((attributes_array.length > 0) ? ' ' : '') + attributes_array.join(' '),
 			'class': class_array.join(' '),
 			'id': this.form_id_prefix + 'section-' + section.id + (section_repeatable_index ? ('-repeat-' + section_repeatable_index) : ''),
 			'data_id': section.id,
@@ -3468,6 +3484,7 @@
 
 		// Input group
 		var process_input_group = true;
+		var append = '';
 
 		// Field type checks
 		switch(field.type) {
@@ -3480,7 +3497,7 @@
 		}
 
 		var prepend = process_input_group ? this.parse_variables_process(this.get_object_meta_value(field, 'prepend', ''), section_repeatable_index, false, field, 'field_prepend', calc_register).output : '';
-		var append = process_input_group ? this.parse_variables_process(this.get_object_meta_value(field, 'append', ''), section_repeatable_index, false, field, 'field_prepend', calc_register).output : '';
+		append += process_input_group ? this.parse_variables_process(this.get_object_meta_value(field, 'append', ''), section_repeatable_index, false, field, 'field_prepend', calc_register).output : '';
 
 		// Classes
 		var class_field = '';

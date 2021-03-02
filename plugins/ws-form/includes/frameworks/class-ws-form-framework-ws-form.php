@@ -98,7 +98,7 @@
 					'public' => array(
 
 						'mask_wrapper'	=>	'<div class="wsf-groups">#groups</div>',
-						'mask_single' 	=> '<div class="#class" id="#id" data-id="#data_id" data-group-index="#data_group_index" role="tabpanel">#label#group</div>',
+						'mask_single' 	=> '<div class="#class" id="#id" data-id="#data_id" data-group-index="#data_group_index" role="tabpanel"#attributes>#label#group</div>',
 						'mask_label' 	=> '<h3>#label</h3>',
 						'class'			=> 'wsf-group'
 					)

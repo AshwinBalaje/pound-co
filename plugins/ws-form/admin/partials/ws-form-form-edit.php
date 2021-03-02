@@ -122,10 +122,24 @@
 <!-- /Sidebars -->
 
 <script>
+
 <?php
 
 	// Get config
-	$json_config = wp_json_encode(WS_Form_Config::get_config(false, array(), true));
+	$json_config = WS_Form_Config::get_config(false, array(), true);
+?>
+	// Embed config
+	var wsf_form_json_config = {};
+<?php
+
+	// Split up config (Fixes HTTP2 error on certain hosting providers that can't handle the full JSON string)
+	foreach($json_config as $key => $config) {
+
+?>	wsf_form_json_config.<?php echo $key; ?> = <?php echo wp_json_encode($config); ?>;
+<?php
+	}
+
+	$json_config = null;
 
 	// Get form data
 	try {
@@ -140,13 +154,6 @@
 		$json_form = false;
 	}
 ?>
-	// Embed config
-	var wsf_form_json_config = <?php
-
-	echo $json_config;	// phpcs:ignore
-	$json_config = null;
-
-?>;
 
 	// Embed form data
 	var wsf_form_json = { <?php

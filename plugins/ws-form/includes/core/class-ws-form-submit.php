@@ -9,6 +9,8 @@
 		public $date_expire;
 		public $user_id;
 		public $hash;
+		public $token;
+		public $token_validated;
 		public $duration;
 		public $count_submit;
 		public $status;
@@ -44,9 +46,9 @@
 
 		public $file_objects = array();
 
-		const DB_INSERT = 'form_id,date_added,date_updated,date_expire,user_id,hash,duration,count_submit,status,actions,section_repeatable,preview,spam_level,starred,viewed,encrypted';
-		const DB_UPDATE = 'form_id,date_added,date_updated,date_expire,user_id,hash,duration,count_submit,status,actions,section_repeatable,preview,spam_level,starred,viewed,encrypted';
-		const DB_SELECT = 'form_id,date_added,date_updated,date_expire,user_id,hash,duration,count_submit,status,actions,section_repeatable,preview,spam_level,starred,viewed,encrypted,id';
+		const DB_INSERT = 'form_id,date_added,date_updated,date_expire,user_id,hash,token,token_validated,duration,count_submit,status,actions,section_repeatable,preview,spam_level,starred,viewed,encrypted';
+		const DB_UPDATE = 'form_id,date_added,date_updated,date_expire,user_id,hash,token,token_validated,duration,count_submit,status,actions,section_repeatable,preview,spam_level,starred,viewed,encrypted';
+		const DB_SELECT = 'form_id,date_added,date_updated,date_expire,user_id,hash,token,token_validated,duration,count_submit,status,actions,section_repeatable,preview,spam_level,starred,viewed,encrypted,id';
 
 		public function __construct() {
 
@@ -58,6 +60,8 @@
 			$this->table_name = $wpdb->prefix . WS_FORM_DB_TABLE_PREFIX . 'submit';
 			$this->table_name_meta = $this->table_name . '_meta';
 			$this->hash = '';
+			$this->token = false;
+			$this->token_validated = false;
 			$this->status = 'draft';
 			$this->duration = 0;
 			$this->count_submit = 0;
@@ -99,7 +103,7 @@
 			global $wpdb;
 
 			// get_user_id(false) = Does not exit on zero
-			$sql = sprintf("INSERT INTO %s (%s) VALUES (%u, '%s', '%s', %s, %u, '%s', %u, %u, '%s', '%s', '%s', %u, %s, %u, %u, %u);", $this->table_name, self::DB_INSERT, $this->form_id, $this->date_added, $this->date_updated, (is_null($this->date_expire) ? 'NULL' : "'" . $this->date_expire . "'"), $this->user_id, '', $this->duration, $this->count_submit, esc_sql($this->status), esc_sql($this->actions), esc_sql($this->section_repeatable), ($this->preview ? 1 : 0), (is_null($this->spam_level) ? 'NULL' : $this->spam_level), ($this->starred ? 1 : 0), ($this->viewed ? 1 : 0), ($this->encrypted ? 1 : 0));
+			$sql = sprintf("INSERT INTO %s (%s) VALUES (%u, '%s', '%s', %s, %u, '', '', 0, %u, %u, '%s', '%s', '%s', %u, %s, %u, %u, %u);", $this->table_name, self::DB_INSERT, $this->form_id, $this->date_added, $this->date_updated, (is_null($this->date_expire) ? 'NULL' : "'" . $this->date_expire . "'"), $this->user_id, $this->duration, $this->count_submit, esc_sql($this->status), esc_sql($this->actions), esc_sql($this->section_repeatable), ($this->preview ? 1 : 0), (is_null($this->spam_level) ? 'NULL' : $this->spam_level), ($this->starred ? 1 : 0), ($this->viewed ? 1 : 0), ($this->encrypted ? 1 : 0));
 			if($wpdb->query($sql) === false) { parent::db_wpdb_handle_error(__('Error adding submit', 'ws-form')); }
 
 			// Get inserted ID
@@ -108,8 +112,11 @@
 			// Create hash
 			self::db_create_hash();
 
+			// Create token
+			self::db_create_token();
+
 			// Update hash
-			$sql = sprintf("UPDATE %s SET hash = '%s' WHERE id=%u LIMIT 1", $this->table_name, esc_sql($this->hash), $this->id);
+			$sql = sprintf("UPDATE %s SET hash = '%s', token = '%s' WHERE id=%u LIMIT 1", $this->table_name, esc_sql($this->hash), esc_sql($this->token), $this->id);
 			if($wpdb->query($sql) === false) { parent::db_wpdb_handle_error(__('Error updating submit', 'ws-form')); }
 
 			// Update form submit unread count statistic
@@ -385,6 +392,22 @@
 				return false;
 			}
 
+			// Check token
+			if($this->token !== false) {
+
+				if(!WS_Form_Common::check_submit_hash($this->token)) {
+
+					$this->token = '';
+					return false;
+				}
+
+				$token_check = $this->token;
+
+			} else {
+
+				$token_check = false;
+			}
+
 			global $wpdb;
 
 			// Get form submission
@@ -417,6 +440,19 @@
 			if($get_expanded) {
 
 				self::db_read_expanded($submit_object, true, true, true, true, true, true, true, $bypass_user_capability_check);
+			}
+
+			// Perform token validation
+			if(!$this->token_validated && ($token_check !== false)) {
+
+				if($this->token === $token_check) {
+
+					$this->token_validated = $submit_object->token_validated = true;
+
+					// Update hash
+					$sql = sprintf("UPDATE %s SET token_validated = 1 WHERE id=%u LIMIT 1", $this->table_name, $this->id);
+					if($wpdb->query($sql) === false) { parent::db_wpdb_handle_error(__('Error updating submit', 'ws-form')); }
+				}
 			}
 
 			// Return array
@@ -2022,11 +2058,32 @@
 			// Check hash
 			if(!WS_Form_Common::check_submit_hash($this->hash)) {
 
-				parent::db_throw_error(__('Invalid hash ID (db_create_hash)', 'ws-form'));
+				parent::db_throw_error(__('Invalid hash (db_create_hash)', 'ws-form'));
 				die();
 			}
 
 			return $this->hash;
+		}
+
+		// Create token
+		public function db_create_token() {
+
+			if(!WS_Form_Common::check_submit_hash($this->hash)) {
+
+				parent::db_throw_error(__('Invalid hash (db_create_token)', 'ws-form'));
+				die();
+			}
+
+			if($this->token == '') { $this->token = esc_sql(wp_hash($this->id . '_' . $this->form_id . '_' . $this->token . '_' . time() . '_' . wp_rand())); }
+
+			// Check hash
+			if(!WS_Form_Common::check_submit_hash($this->token)) {
+
+				parent::db_throw_error(__('Invalid token (db_create_token)', 'ws-form'));
+				die();
+			}
+
+			return $this->token;
 		}
 
 		// Check form id

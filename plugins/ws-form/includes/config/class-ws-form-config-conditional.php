@@ -18,45 +18,48 @@
 						'logic' => array(
 
 							// Validation
-							'validate'		=> array('text' => __('Validated', 'ws-form'), 'values' => false, 'event' => 'wsf-validate', 'case_sensitive' => false, 'group' => 'validate'),
-							'validate_not'	=> array('text' => __('Not validated', 'ws-form'), 'values' => false, 'event' => 'wsf-validate', 'case_sensitive' => false, 'group' => 'validate'),
+							'validate'		=> array('text' => __('Validated', 'ws-form'), 'values' => false, 'event' => 'wsf-validate', 'group' => 'validate'),
+							'validate_not'	=> array('text' => __('Not validated', 'ws-form'), 'values' => false, 'event' => 'wsf-validate', 'group' => 'validate'),
 
 							// Events
-							'wsf-rendered'	=> array('text' => __('Rendered', 'ws-form'), 'values' => false, 'event' => 'wsf-rendered', 'case_sensitive' => false, 'group' => 'event'),
+							'wsf-rendered'	=> array('text' => __('Rendered', 'ws-form'), 'values' => false, 'event' => 'wsf-rendered', 'group' => 'event'),
 
-							'wsf-submit'	=> array('text' => __('Submit', 'ws-form'), 'values' => false, 'event' => 'wsf-submit', 'case_sensitive' => false, 'group' => 'event'),
-							'wsf-save'	=> array('text' => __('Save', 'ws-form'), 'values' => false, 'event' => 'wsf-save', 'case_sensitive' => false, 'group' => 'event'),
-							'wsf-submit-save'	=> array('text' => __('Submit or save', 'ws-form'), 'values' => false, 'event' => 'wsf-submit wsf-save', 'case_sensitive' => false, 'group' => 'event'),
+							'wsf-submit'	=> array('text' => __('Submit', 'ws-form'), 'values' => false, 'event' => 'wsf-submit', 'group' => 'event'),
+							'wsf-save'	=> array('text' => __('Save', 'ws-form'), 'values' => false, 'event' => 'wsf-save', 'group' => 'event'),
+							'wsf-submit-save'	=> array('text' => __('Submit or save', 'ws-form'), 'values' => false, 'event' => 'wsf-submit wsf-save', 'group' => 'event'),
 
-							'wsf-submit-complete'	=> array('text' => __('Submit complete', 'ws-form'), 'values' => false, 'event' => 'wsf-submit-complete', 'case_sensitive' => false, 'group' => 'event'),
-							'wsf-save-complete'	=> array('text' => __('Save complete', 'ws-form'), 'values' => false, 'event' => 'wsf-save-complete', 'case_sensitive' => false, 'group' => 'event'),
-							'wsf-complete'	=> array('text' => __('Submit or save complete', 'ws-form'), 'values' => false, 'event' => 'wsf-complete', 'case_sensitive' => false, 'group' => 'event'),
+							'wsf-submit-complete'	=> array('text' => __('Submit complete', 'ws-form'), 'values' => false, 'event' => 'wsf-submit-complete', 'group' => 'event'),
+							'wsf-save-complete'	=> array('text' => __('Save complete', 'ws-form'), 'values' => false, 'event' => 'wsf-save-complete', 'group' => 'event'),
+							'wsf-complete'	=> array('text' => __('Submit or save complete', 'ws-form'), 'values' => false, 'event' => 'wsf-complete', 'group' => 'event'),
 
-							'wsf-submit-error'	=> array('text' => __('Submit error', 'ws-form'), 'values' => false, 'event' => 'wsf-submit-error', 'case_sensitive' => false, 'group' => 'event'),
-							'wsf-save-error'	=> array('text' => __('Save error', 'ws-form'), 'values' => false, 'event' => 'wsf-save-error', 'case_sensitive' => false, 'group' => 'event'),
-							'wsf-error'	=> array('text' => __('Submit or save error', 'ws-form'), 'values' => false, 'event' => 'wsf-error', 'case_sensitive' => false, 'group' => 'event'),
+							'wsf-submit-error'	=> array('text' => __('Submit error', 'ws-form'), 'values' => false, 'event' => 'wsf-submit-error', 'group' => 'event'),
+							'wsf-save-error'	=> array('text' => __('Save error', 'ws-form'), 'values' => false, 'event' => 'wsf-save-error', 'group' => 'event'),
+							'wsf-error'	=> array('text' => __('Submit or save error', 'ws-form'), 'values' => false, 'event' => 'wsf-error', 'group' => 'event'),
 
-							'click'			=> array('text' => __('Clicked', 'ws-form'), 'values' => false, 'event' => 'click', 'case_sensitive' => false, 'group' => 'event'),
+							'click'			=> array('text' => __('Clicked', 'ws-form'), 'values' => false, 'event' => 'click', 'group' => 'event'),
 
-							'mousedown'		=> array('text' => __('Mouse down', 'ws-form'), 'values' => false, 'event' => 'mousedown', 'case_sensitive' => false, 'group' => 'event'),
-							'mouseup'		=> array('text' => __('Mouse up', 'ws-form'), 'values' => false, 'event' => 'mouseup', 'case_sensitive' => false, 'group' => 'event'),
-							'mouseover'		=> array('text' => __('Mouse over', 'ws-form'), 'values' => false, 'event' => 'mouseover', 'case_sensitive' => false, 'group' => 'event'),
-							'mouseout'		=> array('text' => __('Mouse out', 'ws-form'), 'values' => false, 'event' => 'mouseout', 'case_sensitive' => false, 'group' => 'event'),
+							'mousedown'		=> array('text' => __('Mouse down', 'ws-form'), 'values' => false, 'event' => 'mousedown', 'group' => 'event'),
+							'mouseup'		=> array('text' => __('Mouse up', 'ws-form'), 'values' => false, 'event' => 'mouseup', 'group' => 'event'),
+							'mouseover'		=> array('text' => __('Mouse over', 'ws-form'), 'values' => false, 'event' => 'mouseover', 'group' => 'event'),
+							'mouseout'		=> array('text' => __('Mouse out', 'ws-form'), 'values' => false, 'event' => 'mouseout', 'group' => 'event'),
 
-							'touchstart'		=> array('text' => __('Touch start', 'ws-form'), 'values' => false, 'event' => 'touchstart', 'case_sensitive' => false, 'group' => 'event'),
-							'touchend'		=> array('text' => __('Touch end', 'ws-form'), 'values' => false, 'event' => 'touchend', 'case_sensitive' => false, 'group' => 'event'),
-							'touchmove'		=> array('text' => __('Touch move', 'ws-form'), 'values' => false, 'event' => 'touchmove', 'case_sensitive' => false, 'group' => 'event'),
+							'touchstart'		=> array('text' => __('Touch start', 'ws-form'), 'values' => false, 'event' => 'touchstart', 'group' => 'event'),
+							'touchend'		=> array('text' => __('Touch end', 'ws-form'), 'values' => false, 'event' => 'touchend', 'group' => 'event'),
+							'touchmove'		=> array('text' => __('Touch move', 'ws-form'), 'values' => false, 'event' => 'touchmove', 'group' => 'event'),
 							'touchcancel'		=> array('text' => __('Touch cancel', 'ws-form'), 'values' => false, 'event' => 'touchcancel', 'case_sensitive' => false, 'group' => 'event'),
 						),
 						'action' => array(
 
 							'form_submit'			=> array('text' => __('Submit', 'ws-form'), 'values' => false),
+							'form_save_validate'	=> array('text' => __('Save if validated', 'ws-form'), 'values' => false),
 							'form_save'				=> array('text' => __('Save', 'ws-form'), 'values' => false),
 							'form_clear'			=> array('text' => __('Clear', 'ws-form'), 'values' => false),
 							'form_reset'			=> array('text' => __('Reset', 'ws-form'), 'values' => false),
 							'class_add_wrapper'		=> array('text' => __('Add wrapper class', 'ws-form'), 'values' => true, 'auto_else' => 'class_remove_wrapper'),
 							'class_remove_wrapper'	=> array('text' => __('Remove wrapper class', 'ws-form'), 'values' => true, 'auto_else' => 'class_add_wrapper'),
 							'javascript'			=> array('text' => __('Run JavaScript', 'ws-form'), 'type' => 'html_editor'),
+							'validate_show'			=> array('text' => __('Show validation', 'ws-form'), 'values' => false),
+							'validate_hide'			=> array('text' => __('Hide validation', 'ws-form'), 'values' => false),
 						)
 					),
 
@@ -67,19 +70,19 @@
 						'logic' => array(
 
 							// Validation
-							'validate'		=> array('text' => __('Validated', 'ws-form'), 'values' => false, 'event' => 'wsf-validate-silent', 'case_sensitive' => false, 'group' => 'validate'),
-							'validate_not'	=> array('text' => __('Not validated', 'ws-form'), 'values' => false, 'event' => 'wsf-validate-silent', 'case_sensitive' => false, 'group' => 'validate'),
+							'validate'		=> array('text' => __('Validated', 'ws-form'), 'values' => false, 'event' => 'wsf-validate-silent', 'group' => 'validate'),
+							'validate_not'	=> array('text' => __('Not validated', 'ws-form'), 'values' => false, 'event' => 'wsf-validate-silent', 'group' => 'validate'),
 
 							// Events
-							'click'			=> array('text' => __('Clicked', 'ws-form'), 'values' => false, 'event' => 'click', 'case_sensitive' => false, 'group' => 'event'),
-							'mousedown'		=> array('text' => __('Mouse down', 'ws-form'), 'values' => false, 'event' => 'mousedown', 'case_sensitive' => false, 'group' => 'event'),
-							'mouseup'		=> array('text' => __('Mouse up', 'ws-form'), 'values' => false, 'event' => 'mouseup', 'case_sensitive' => false, 'group' => 'event'),
-							'mouseover'		=> array('text' => __('Mouse over', 'ws-form'), 'values' => false, 'event' => 'mouseover', 'case_sensitive' => false, 'group' => 'event'),
-							'mouseout'		=> array('text' => __('Mouse out', 'ws-form'), 'values' => false, 'event' => 'mouseout', 'case_sensitive' => false, 'group' => 'event'),
-							'touchstart'		=> array('text' => __('Touch start', 'ws-form'), 'values' => false, 'event' => 'touchstart', 'case_sensitive' => false, 'group' => 'event'),
-							'touchend'		=> array('text' => __('Touch end', 'ws-form'), 'values' => false, 'event' => 'touchend', 'case_sensitive' => false, 'group' => 'event'),
-							'touchmove'		=> array('text' => __('Touch move', 'ws-form'), 'values' => false, 'event' => 'touchmove', 'case_sensitive' => false, 'group' => 'event'),
-							'touchcancel'		=> array('text' => __('Touch cancel', 'ws-form'), 'values' => false, 'event' => 'touchcancel', 'case_sensitive' => false, 'group' => 'event'),
+							'click'			=> array('text' => __('Clicked', 'ws-form'), 'values' => false, 'event' => 'click', 'group' => 'event'),
+							'mousedown'		=> array('text' => __('Mouse down', 'ws-form'), 'values' => false, 'event' => 'mousedown', 'group' => 'event'),
+							'mouseup'		=> array('text' => __('Mouse up', 'ws-form'), 'values' => false, 'event' => 'mouseup', 'group' => 'event'),
+							'mouseover'		=> array('text' => __('Mouse over', 'ws-form'), 'values' => false, 'event' => 'mouseover', 'group' => 'event'),
+							'mouseout'		=> array('text' => __('Mouse out', 'ws-form'), 'values' => false, 'event' => 'mouseout', 'group' => 'event'),
+							'touchstart'		=> array('text' => __('Touch start', 'ws-form'), 'values' => false, 'event' => 'touchstart', 'group' => 'event'),
+							'touchend'		=> array('text' => __('Touch end', 'ws-form'), 'values' => false, 'event' => 'touchend', 'group' => 'event'),
+							'touchmove'		=> array('text' => __('Touch move', 'ws-form'), 'values' => false, 'event' => 'touchmove', 'group' => 'event'),
+							'touchcancel'		=> array('text' => __('Touch cancel', 'ws-form'), 'values' => false, 'event' => 'touchcancel', 'group' => 'event'),
 						),
 						'action' => array(
 
@@ -105,8 +108,8 @@
 						'logic' => array(
 
 							// Validation
-							'validate'		=> array('text' => __('Validated', 'ws-form'), 'values' => false, 'event' => 'wsf-validate-silent', 'case_sensitive' => false, 'group' => 'validate'),
-							'validate_not'	=> array('text' => __('Not validated', 'ws-form'), 'values' => false, 'event' => 'wsf-validate-silent', 'case_sensitive' => false, 'group' => 'validate'),
+							'validate'		=> array('text' => __('Validated', 'ws-form'), 'values' => false, 'event' => 'wsf-validate-silent', 'group' => 'validate'),
+							'validate_not'	=> array('text' => __('Not validated', 'ws-form'), 'values' => false, 'event' => 'wsf-validate-silent', 'group' => 'validate'),
 
 							// Section repeatable count
 							'r=='					=> array('text' => __('Row count equals', 'ws-form'), 'type' => 'number', 'event' => 'wsf-section-repeatable', 'case_sensitive' => false, 'group' => 'rs'),
@@ -244,35 +247,35 @@
 							'cw<' 					=> array('text' => __('Word count less than', 'ws-form'), 'type' => 'number', 'case_sensitive' => false, 'group' => 'value'),
 
 							// Validation
-							'validate'				=> array('text' => __('Is validated', 'ws-form'), 'values' => false, 'event' => 'wsf-validate-silent', 'case_sensitive' => false, 'group' => 'validate'),
-							'validate_not'			=> array('text' => __('Is not validated', 'ws-form'), 'values' => false, 'event' => 'wsf-validate-silent', 'case_sensitive' => false, 'group' => 'validate'),
+							'validate'				=> array('text' => __('Is validated', 'ws-form'), 'values' => false, 'event' => 'wsf-validate-silent', 'group' => 'validate'),
+							'validate_not'			=> array('text' => __('Is not validated', 'ws-form'), 'values' => false, 'event' => 'wsf-validate-silent', 'group' => 'validate'),
 
 							// reCAPTCHA
-							'recaptcha' 			=> array('text' => __('reCAPTCHA valid', 'ws-form'), 'values' => false, 'case_sensitive' => false, 'group' => 'validate'),
-							'recaptcha_not' 	=> array('text' => __('reCAPTCHA invalid', 'ws-form'), 'values' => false, 'case_sensitive' => false, 'group' => 'validate'),
+							'recaptcha' 			=> array('text' => __('reCAPTCHA valid', 'ws-form'), 'values' => false, 'group' => 'validate'),
+							'recaptcha_not' 	=> array('text' => __('reCAPTCHA invalid', 'ws-form'), 'values' => false, 'group' => 'validate'),
 
 							// Signature
-							'signature' 			=> array('text' => __('Signed', 'ws-form'), 'values' => false, 'case_sensitive' => false, 'group' => 'validate'),
-							'signature_not' 		=> array('text' => __('Unsigned', 'ws-form'), 'values' => false, 'case_sensitive' => false, 'group' => 'validate'),
+							'signature' 			=> array('text' => __('Signed', 'ws-form'), 'values' => false, 'group' => 'validate'),
+							'signature_not' 		=> array('text' => __('Unsigned', 'ws-form'), 'values' => false, 'group' => 'validate'),
 
 							// Events
-							'click'			=> array('text' => __('Clicked', 'ws-form'), 'values' => false, 'event' => 'click', 'case_sensitive' => false, 'group' => 'event'),
-							'mousedown'		=> array('text' => __('Mouse down', 'ws-form'), 'values' => false, 'event' => 'mousedown', 'case_sensitive' => false, 'group' => 'event'),
-							'mouseup'		=> array('text' => __('Mouse up', 'ws-form'), 'values' => false, 'event' => 'mouseup', 'case_sensitive' => false, 'group' => 'event'),
-							'mouseover'		=> array('text' => __('Mouse over', 'ws-form'), 'values' => false, 'event' => 'mouseover', 'case_sensitive' => false, 'group' => 'event'),
-							'mouseout'		=> array('text' => __('Mouse out', 'ws-form'), 'values' => false, 'event' => 'mouseout', 'case_sensitive' => false, 'group' => 'event'),
-							'touchstart'		=> array('text' => __('Touch start', 'ws-form'), 'values' => false, 'event' => 'touchstart', 'case_sensitive' => false, 'group' => 'event'),
-							'touchend'		=> array('text' => __('Touch end', 'ws-form'), 'values' => false, 'event' => 'touchend', 'case_sensitive' => false, 'group' => 'event'),
-							'touchmove'		=> array('text' => __('Touch move', 'ws-form'), 'values' => false, 'event' => 'touchmove', 'case_sensitive' => false, 'group' => 'event'),
-							'touchcancel'		=> array('text' => __('Touch cancel', 'ws-form'), 'values' => false, 'event' => 'touchcancel', 'case_sensitive' => false, 'group' => 'event'),
+							'click'			=> array('text' => __('Clicked', 'ws-form'), 'values' => false, 'event' => 'click', 'group' => 'event'),
+							'mousedown'		=> array('text' => __('Mouse down', 'ws-form'), 'values' => false, 'event' => 'mousedown', 'group' => 'event'),
+							'mouseup'		=> array('text' => __('Mouse up', 'ws-form'), 'values' => false, 'event' => 'mouseup', 'group' => 'event'),
+							'mouseover'		=> array('text' => __('Mouse over', 'ws-form'), 'values' => false, 'event' => 'mouseover', 'group' => 'event'),
+							'mouseout'		=> array('text' => __('Mouse out', 'ws-form'), 'values' => false, 'event' => 'mouseout', 'group' => 'event'),
+							'touchstart'		=> array('text' => __('Touch start', 'ws-form'), 'values' => false, 'event' => 'touchstart', 'group' => 'event'),
+							'touchend'		=> array('text' => __('Touch end', 'ws-form'), 'values' => false, 'event' => 'touchend', 'group' => 'event'),
+							'touchmove'		=> array('text' => __('Touch move', 'ws-form'), 'values' => false, 'event' => 'touchmove', 'group' => 'event'),
+							'touchcancel'		=> array('text' => __('Touch cancel', 'ws-form'), 'values' => false, 'event' => 'touchcancel', 'group' => 'event'),
 
-							'focus'					=> array('text' => __('On focus', 'ws-form'), 'values' => false, 'event' => 'focus', 'case_sensitive' => false, 'group' => 'event'),
-							'blur'					=> array('text' => __('On blur', 'ws-form'), 'values' => false, 'event' => 'blur', 'case_sensitive' => false, 'group' => 'event'),
-							'change'				=> array('text' => __('On change', 'ws-form'), 'values' => false, 'event' => 'change', 'case_sensitive' => false, 'group' => 'event'),
-							'input'					=> array('text' => __('On input', 'ws-form'), 'values' => false, 'event' => 'input', 'case_sensitive' => false, 'group' => 'event'),
-							'change_input'			=> array('text' => __('On change or input', 'ws-form'), 'values' => false, 'event' => 'change input', 'case_sensitive' => false, 'group' => 'event'),
-							'keyup'					=> array('text' => __('On key up', 'ws-form'), 'values' => false, 'event' => 'keyup', 'case_sensitive' => false, 'group' => 'event'),
-							'keydown'				=> array('text' => __('On key down', 'ws-form'), 'values' => false, 'event' => 'keydown', 'case_sensitive' => false, 'group' => 'event'),
+							'focus'					=> array('text' => __('On focus', 'ws-form'), 'values' => false, 'event' => 'focus', 'group' => 'event'),
+							'blur'					=> array('text' => __('On blur', 'ws-form'), 'values' => false, 'event' => 'blur', 'group' => 'event'),
+							'change'				=> array('text' => __('On change', 'ws-form'), 'values' => false, 'event' => 'change', 'group' => 'event'),
+							'input'					=> array('text' => __('On input', 'ws-form'), 'values' => false, 'event' => 'input', 'group' => 'event'),
+							'change_input'			=> array('text' => __('On change or input', 'ws-form'), 'values' => false, 'event' => 'change input', 'group' => 'event'),
+							'keyup'					=> array('text' => __('On key up', 'ws-form'), 'values' => false, 'event' => 'keyup', 'group' => 'event'),
+							'keydown'				=> array('text' => __('On key down', 'ws-form'), 'values' => false, 'event' => 'keydown', 'group' => 'event'),
 
 						),
 						'action' => array(
@@ -413,6 +416,19 @@
 							'action_run_on_save' 			=> array('text' => __('Run when form saved', 'ws-form'), 'values' => false, 'auto_else' => 'action_do_not_run_on_save'),
 							'action_do_not_run_on_save' 	=> array('text' => __('Do not run when form saved', 'ws-form'), 'values' => false, 'auto_else' => 'action_run_save')
 						)
+					),
+
+					// Submission
+					'submit' => array(
+
+						'text' 		=> __('Submission', 'ws-form'),
+						'logic' => array(
+
+							// Validation
+							'token_validated'		=> array('text' => __('Email Validated', 'ws-form'), 'values' => false, 'event' => 'wsf-rendered', 'group' => 'validate'),
+							'token_validated_not'	=> array('text' => __('Email Not validated', 'ws-form'), 'values' => false, 'event' => 'wsf-rendered', 'group' => 'validate')
+						),
+						'action' => array()
 					)
 				),
 

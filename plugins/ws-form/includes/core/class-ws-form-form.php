@@ -86,6 +86,7 @@
 			$ws_form_template = New WS_Form_Template();
 			$ws_form_template->id = $id;
 			$ws_form_template->read();
+			$form_object = $ws_form_template->form_object;
 
 			// Ensure form attributes are reset
 			$form_object->status = 'draft';
@@ -95,7 +96,7 @@
 			$form_object->meta->tab_index = '0';
 
 			// Create form
-			self::db_update_from_object($ws_form_template->form_object, true, true);
+			self::db_update_from_object($form_object, true, true);
 
 			// Fix data - Conditional
 			self::db_conditional_repair();

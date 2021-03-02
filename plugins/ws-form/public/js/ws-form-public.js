@@ -39,7 +39,7 @@
 		this.invalid_feedback_mask_placeholder = '';
 		if(typeof($.WS_Form.meta_keys['invalid_feedback']) !== 'undefined') {
 
-			if(typeof $.WS_Form.meta_keys['invalid_feedback']['p'] !== 'undefined') {
+			if(typeof($.WS_Form.meta_keys['invalid_feedback']['p']) !== 'undefined') {
 
 				this.invalid_feedback_mask_placeholder = $.WS_Form.meta_keys['invalid_feedback']['p'];
 			}
@@ -48,8 +48,8 @@
 		// Custom action URL
 		this.form_action_custom = (this.form_obj.attr('action') != (ws_form_settings.url + 'submit'));
 
-		// Get activated class
-		var class_validated_array = (typeof this.framework.fields.public.class_form_validated !== 'undefined') ? this.framework.fields.public.class_form_validated : [];
+		// Get validated class
+		var class_validated_array = (typeof(this.framework.fields.public.class_form_validated) !== 'undefined') ? this.framework.fields.public.class_form_validated : [];
 		this.class_validated = class_validated_array.join(' ');
 
 
@@ -69,17 +69,18 @@
 				if(
 					(typeof(wsf_hash.id) !== 'undefined') &&
 					(typeof(wsf_hash.hash) !== 'undefined') &&
+					(typeof(wsf_hash.token) !== 'undefined') &&
 					(wsf_hash.id == this.form_id)
 				) {
 
-					this.hash_set(wsf_hash.hash, true);
+					this.hash_set(wsf_hash.hash, wsf_hash.token, true);
 				}
 			}
 
 		} else {
 
 			// Set hash from cookie
-			this.hash_set(this.cookie_get('hash', ''), true);
+			this.hash_set(this.cookie_get('hash', ''), false, true);
 		}
 
 		// Visual editor?
@@ -87,14 +88,21 @@
 
 		// Read submission data if hash is defined
 		var ws_this = this;
-		if(this.hash != '') {
+		if(this.hash) {
+
+			var url = 'submit/hash/' + this.hash + '/';
+			if(this.token) { url += this.token + '/'; }
 
 			// Call AJAX request
-			$.WS_Form.this.api_call('submit/hash/' + this.hash, 'GET', false, function(response) {
+			$.WS_Form.this.api_call(url, 'GET', false, function(response) {
 
-				// Save the submissions data
-				ws_this.submit = response.data;
+				if(typeof(response.data) !== 'undefined') {
 
+					// Save the submissions data
+					ws_this.submit = response.data;
+				}
+
+				// Initialize after getting submit
 				ws_this.init_after_get_submit(true);
 
 				// Finished with submit data
@@ -105,6 +113,7 @@
 				// Read auto populate data instead
 				ws_this.read_json_populate();
 
+				// Initialize after getting submit
 				ws_this.init_after_get_submit(false);
 			});
 
@@ -113,6 +122,7 @@
 			// Read auto populate data
 			this.read_json_populate();
 
+			// Initialize after getting submit
 			this.init_after_get_submit(false);
 		}
 	}
@@ -461,60 +471,92 @@
 	$.WS_Form.prototype.form_navigation = function() {
 
 		var ws_this = this;
-		var group_count = this.form.groups.length;
+
+		var group_count = $('.wsf-tabs', this.form_canvas_obj).children(':visible').length;
+
+		// Buttons - Next
+		$('[data-action="wsf-tab_next"]', this.form_canvas_obj).each(function() {
+
+			// Remove existing click event
+			$(this).off('click');
+
+			// Get next group
+			var group_next = $(this).closest('[data-group-index]').nextAll(':not([data-wsf-group-hidden])').first();
+
+			// If there are no tabs, or no next tab, disable the next button
+			if(
+				(group_count <= 1) ||
+				(!group_next.length)
+			) {
+				$(this).attr('disabled', '').attr('data-wsf-disabled', '');
+
+			} else {
+
+				if(typeof($(this).attr('data-wsf-disabled')) !== 'undefined') { $(this).removeAttr('disabled').removeAttr('data-wsf-disabled'); }
+			}
+
+			// If button is disabled, then don't initialize
+			if(typeof($(this).attr('disabled')) !== 'undefined') { return; }
+
+			// Add click event
+			$(this).on('click', function() {
+
+				ws_this.group_index_new($(this), group_next.attr('data-group-index'));
+			});
+		});
+
+		// Buttons - Previous
+		$('[data-action="wsf-tab_previous"]', this.form_canvas_obj).each(function() {
+
+			// Remove existing click event
+			$(this).off('click');
+
+			// Get previous group
+			var group_previous = $(this).closest('[data-group-index]').prevAll(':not([data-wsf-group-hidden])').first();
+
+			// If there are no tabs, or no previous tab, disable the previous button
+			if(
+				(group_count <= 1) ||
+				(!group_previous.length)
+			) {
+				$(this).attr('disabled', '').attr('data-wsf-disabled', '');
+
+			} else {
+
+				if(typeof($(this).attr('data-wsf-disabled')) !== 'undefined') { $(this).removeAttr('disabled').removeAttr('data-wsf-disabled'); }
+			}
+
+			// If button is disabled, then don't initialize
+			if(typeof($(this).attr('disabled')) !== 'undefined') { return; }
+
+			// Add click event
+			$(this).on('click', function() {
+
+				ws_this.group_index_new($(this), group_previous.attr('data-group-index'));
+			});
+		});
 
 		// Buttons - Save
 		this.form_canvas_obj.off('click', '[data-action="wsf-save"]').on('click', '[data-action="wsf-save"]', function() {
 
-			ws_this.form_post('save');
-		});
+			// Get field ID
+			var field_id = $(this).closest('[data-id]').attr('data-id');
 
-		// Buttons - Next
-		this.form_canvas_obj.off('click', '[data-action="wsf-tab_next"]').on('click', '[data-action="wsf-tab_next"]', function() {
+			if(typeof(ws_this.field_data_cache[field_id]) !== 'undefined') {
 
-			if(typeof($(this).attr('disabled')) === 'undefined') {
+				var field = ws_this.field_data_cache[field_id];
 
-				ws_this.group_index_offset($(this), 1);
+				var validate_form = ws_this.get_object_meta_value(field, 'validate_form', '');
+
+				if(validate_form) {
+
+					ws_this.form_post_if_validated('save');
+
+				} else {
+
+					ws_this.form_post('save');
+				}
 			}
-		});
-		$('[data-action="wsf-tab_next"]:not([data-init-navigation])', this.form_canvas_obj).each(function() {
-
-			// Flag so it only initializes once
-			$(this).attr('data-init-navigation', '');
-
-			// If there are no tabs, disable the next button
-			if(group_count == 1) { $(this).attr('disabled', ''); return true; }
-
-			// Get group index
-			var group_index = ws_this.get_group_index($(this));
-			if(group_index === false) { return true; }
-
-			// If the next button is on the last tab, disable it
-			if(group_index == (group_count - 1)) { $(this).attr('disabled', ''); return true; }
-		});
-
-		// Buttons - Previous
-		this.form_canvas_obj.off('click', '[data-action="wsf-tab_previous"]').on('click', '[data-action="wsf-tab_previous"]', function() {
-
-			if(typeof($(this).attr('disabled')) === 'undefined') {
-
-				ws_this.group_index_offset($(this), -1);
-			}
-		});
-		$('[data-action="wsf-tab_previous"]:not([data-init-navigation])', this.form_canvas_obj).each(function() {
-
-			// Flag so it only initializes once
-			$(this).attr('data-init-navigation', '');
-
-			// If there are no groups, remove the previous button
-			if(group_count == 1) { $(this).attr('disabled', ''); return true; }
-
-			// Get group index
-			var group_index = ws_this.get_group_index($(this));
-			if(group_index === false) { return true; }
-
-			// If the previous button is on the first tab, disable it
-			if(group_index == 0) { $(this).attr('disabled', ''); return true; }
 		});
 
 		// Buttons - Reset
@@ -534,13 +576,7 @@
 	}
 
 	// Tab - Activate by offset amount
-	$.WS_Form.prototype.group_index_offset = function(obj, group_index_offset) {
-
-		// Get group index
-		var group_index = this.get_group_index(obj);
-
-		// Get next group_index
-		var group_index_new = group_index + group_index_offset;
+	$.WS_Form.prototype.group_index_new = function(obj, group_index_new) {
 
 		// Activate tab
 		this.group_index_set(group_index_new);
@@ -608,7 +644,8 @@
 	// Get tab index object resides in
 	$.WS_Form.prototype.get_group_index = function(obj) {
 
-		if(this.form.groups.length <= 1) { return false; }
+		var group_count = $('.wsf-tabs', this.form_canvas_obj).children(':visible').length;
+		if(group_count <= 1) { return false; }
 
 		// Get group
 		var group_single = obj.closest('[data-group-index]');
@@ -886,7 +923,7 @@
 			}
 		});
 
-		$('[id^="' + this.form_id_prefix + 'section-"][style!="display:none;"][style!="display: none;"]', this.form_canvas_obj).find('[name]:not([type="hidden"]),[data-static]').each(function() {
+		$('[id^="' + this.form_id_prefix + 'section-"][style!="display:none;"][style!="display: none;"]', this.form_canvas_obj).find('[name]:not([type="hidden"],[data-hidden-group]),[data-static]').each(function() {
 
 			// Recall cached validation message
 			var field_id = $(this).closest('[data-id]').attr('data-id');
@@ -926,7 +963,7 @@
 			}
 		});
 
-		$('[id^="' + this.form_id_prefix + 'field-wrapper-"][style!="display:none;"][style!="display: none;"]', this.form_canvas_obj).find('[name]:not([type="hidden"]),[data-static]').each(function() {
+		$('[id^="' + this.form_id_prefix + 'field-wrapper-"][style!="display:none;"][style!="display: none;"]', this.form_canvas_obj).find('[name]:not([type="hidden"],[data-hidden-section],[data-hidden-group]),[data-static]').each(function() {
 
 			// Recall cached validation message
 			var field_id = $(this).closest('[data-id]').attr('data-id');
@@ -1211,36 +1248,42 @@
 		// On submit
 		this.form_obj.on('submit', function(e) {
 
-			// Trigger
-			ws_this.trigger('submit-before');
-
-			// Do not submit form
 			e.preventDefault();
 			e.stopPropagation();
 
-			// If form post is locked, return
-			if(ws_this.form_post_locked) { return; }
-
-			// Recalculate e-commerce
-			if(ws_this.has_ecommerce) { ws_this.form_ecommerce_calculate(); }
-
-			// Mark as validated
-			$(this).addClass(ws_this.class_validated);
-
-			// Check validity of form
-			if(ws_this.form_validate($(this))) {
-
-				// Trigger
-				ws_this.trigger('submit-validate-success');
-
-					// Submit form
-					ws_this.form_post('submit');
-			} else {
-
-				// Trigger
-				ws_this.trigger('submit-validate-fail');
-			}
+			// Post if form validates
+			ws_this.form_post_if_validated('submit');
 		});
+	}
+
+	// Form - Post if validated
+	$.WS_Form.prototype.form_post_if_validated = function(post_mode) {
+
+		// Trigger
+		this.trigger(post_mode + '-before');
+
+		// If form post is locked, return
+		if(this.form_post_locked) { return; }
+
+		// Recalculate e-commerce
+		if(this.has_ecommerce) { this.form_ecommerce_calculate(); }
+
+		// Mark as validated
+		this.form_obj.addClass(this.class_validated);
+
+		// Check validity of form
+		if(this.form_validate(this.form_obj)) {
+
+			// Trigger
+			this.trigger(post_mode + '-validate-success');
+
+				// Submit form
+				this.form_post(post_mode);
+		} else {
+
+			// Trigger
+			this.trigger(post_mode + '-validate-fail');
+		}
 	}
 
 	// Form - Validate (WS Form validation functions)
@@ -1586,6 +1629,7 @@
 		var actions_processed = 0;
 		var process_required = false;
 		var process_bypass = false;
+		var process_navigation = false;
 		var ws_this = this;
 
 		for(var action_index in actions) {
@@ -1621,6 +1665,7 @@
 					var conditional_process_action_return = this.conditional_process_action(action_then_else, destination_action, destination_obj_wrapper, destination_obj, destination_object, destination_object_id, destination_object_row_id, destination_value, false);
 					process_required = process_required || conditional_process_action_return.process_required;
 					process_bypass = process_bypass || conditional_process_action_return.process_bypass;
+					process_navigation = process_navigation || conditional_process_action_return.process_navigation;
 
 					break;
 
@@ -1639,6 +1684,7 @@
 					var conditional_process_action_return =  this.conditional_process_action(action_then_else, destination_action, destination_obj_wrapper, destination_obj, destination_object, destination_object_id, destination_object_row_id, destination_value, false);
 					process_required = process_required || conditional_process_action_return.process_required;
 					process_bypass = process_bypass || conditional_process_action_return.process_bypass;
+					process_navigation = process_navigation || conditional_process_action_return.process_navigation;
 
 					break;
 
@@ -1675,6 +1721,7 @@
 						var conditional_process_action_return = ws_this.conditional_process_action(action_then_else, destination_action, $(this), $(this), destination_object, destination_object_id, destination_object_row_id, destination_value, destination_repeatable_index);
 						process_required = process_required || conditional_process_action_return.process_required;
 						process_bypass = process_bypass || conditional_process_action_return.process_bypass;
+						process_navigation = process_navigation || conditional_process_action_return.process_navigation;
 					});
 
 					break;
@@ -1725,6 +1772,7 @@
 						var conditional_process_action_return = ws_this.conditional_process_action(action_then_else, destination_action, $(this), destination_obj, destination_object, destination_object_id, destination_object_row_id, destination_value, destination_repeatable_index);
 						process_required = process_required || conditional_process_action_return.process_required;
 						process_bypass = process_bypass || conditional_process_action_return.process_bypass;
+						process_navigation = process_navigation || conditional_process_action_return.process_navigation;
 					});
 
 					break;
@@ -1738,6 +1786,7 @@
 					var conditional_process_action_return = ws_this.conditional_process_action(action_then_else, destination_action, $(this), false, destination_object, destination_object_id, destination_object_row_id, destination_value, false);
 					process_required = process_required || conditional_process_action_return.process_required;
 					process_bypass = process_bypass || conditional_process_action_return.process_bypass;
+					process_navigation = process_navigation || conditional_process_action_return.process_navigation;
 
 					break;
 			}
@@ -1760,6 +1809,12 @@
 			this.form_tab_validation_process();
 		}
 
+		// Process navigation?
+		if(process_navigation) {
+
+			this.form_navigation();
+		}
+
 		return actions_processed;
 	}
 
@@ -1779,6 +1834,9 @@
 
 		// Process bypass?
 		var process_bypass = false;
+
+		// Process navigation?
+		var process_navigation = false;
 
 		switch(action) {
 
@@ -2153,6 +2211,9 @@
 							// Process bypass
 							process_bypass = true;
 
+							// Process navigation
+							process_navigation = true;
+
 							debug_action_language_id = 'debug_action_hide';
 
 						} else {
@@ -2166,8 +2227,8 @@
 							// Process bypass
 							process_bypass = true;
 
-							// Redraw signatures
-//							this.signatures_redraw(tab_index, false, false);
+							// Process navigation
+							process_navigation = true;
 
 							debug_action_language_id = 'debug_action_show';
 						}
@@ -2578,10 +2639,28 @@
 				}
 				break;
 
+			// Form - Show validation
+			case 'validate_show' :
+
+				this.form_obj.addClass(this.class_validated);
+				break;
+
+			// Form - Hide validation
+			case 'validate_hide' :
+
+				this.form_obj.removeClass(this.class_validated);
+				break;
+
 			// Form - Save
 			case 'form_save' :
 
 				this.form_post('save');
+				break;
+
+			// Form - Save if validated
+			case 'form_save_validate' :
+
+				this.form_post_if_validated('save');
 				break;
 
 			// Form - Submit
@@ -2714,7 +2793,7 @@
 			}
 		}
 
-		return { process_required: process_required, process_bypass: process_bypass };
+		return { process_required: process_required, process_bypass: process_bypass, process_navigation: process_navigation };
 	}
 
 	// Set object attribute (if false, remove the attribute)
@@ -3191,7 +3270,7 @@
 		}
 	}
 
-	// Form - Submit
+	// Form - Post
 	$.WS_Form.prototype.form_post = function(post_mode, action_id) {
 
 		if(typeof post_mode == 'undefined') { post_mode = 'save'; }
@@ -4139,8 +4218,9 @@
 	}
 
 	// Hash - Set
-	$.WS_Form.prototype.hash_set = function(hash, cookie_set) {
+	$.WS_Form.prototype.hash_set = function(hash, token, cookie_set) {
 
+		if(typeof(token) === 'undefined') { token = false; }
 		if(typeof(cookie_set) === 'undefined') { cookie_set = false; }
 
 		if(hash != this.hash) {
@@ -4150,6 +4230,13 @@
 
 			// Set hash cookie
 			cookie_set = true;
+
+		}
+
+		if(token) {
+
+			// Set token
+			this.token = token;
 
 		}
 

@@ -3756,6 +3756,14 @@
 				),
 
 
+				'validate_form'			=> array(
+
+					'label'						=>	__('Validate Before Saving', 'ws-form'),
+					'type'						=>	'checkbox',
+					'help'						=>	__('If checked, the form must validate before it will be saved.', 'ws-form'),
+					'default'					=>	''
+				),
+
 				'invalid_feedback'			=> array(
 
 					'label'						=>	__('Invalid Feedback Text', 'ws-form'),
@@ -3939,6 +3947,14 @@
 					'mask_disregard_on_empty'	=>	true,
 					'help'						=>	__('Show the WordPress password strength meter?', 'ws-form'),
 					'default'					=>	'on',
+				),
+
+				'password_visibility_toggle' => array(
+
+					'label'						=>	__('Password Visibility Toggle', 'ws-form'),
+					'type'						=>	'checkbox',
+					'help'						=>	__('Show the password visibility toggle icon?', 'ws-form'),
+					'default'					=>	'',
 				),
 
 				'hidden_bypass'	=> array(

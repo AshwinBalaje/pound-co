@@ -6,13 +6,14 @@
 
 			// Initial build
 			$css_compile = WS_Form_Common::option_get('css_compile', false);
-			$css_public_layout = WS_Form_Common::option_get('css_public_layout', false);
-			if($css_compile && !$css_public_layout) {
+			$css_public_layout = WS_Form_Common::option_get('css_public_layout', '');
+			if($css_compile && empty($css_public_layout)) {
 
 				self::build_public_css();
 			}
 
 			// Actions that recompile CSS
+			add_action('wsf_activate', array($this, 'build_public_css'));
 			add_action('wsf_settings_update', array($this, 'build_public_css'));
 			add_filter('customize_save_response', function($response) {
 
